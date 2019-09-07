@@ -1,0 +1,21 @@
+{
+  "name": "IoTaaP",
+  "keywords": "iotaap, connectivity, wifi, bluetooth, communication",
+  "description": "Library for IoTaaP connectivity platform",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/mvtsolutions/iotaap.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Ivan Golubic",
+      "email": "ivan@mvt-solutions.com",
+      "url": "https://www.mvt-solutions.com",
+      "maintainer": true
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": "arduino"
+}
