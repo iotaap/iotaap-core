@@ -30,4 +30,71 @@
 #ifndef __IOTAAP_H__
 #define __IOTAAP_H__
 
+
+
+#include <Arduino.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include "lib/Debounce/Debounce.h"
+#include "WiFi.h"
+#include "lib/MQTT/PubSubClient.h"
+
+#define ONBOARD_LED 2
+#define ONBOARD_BUT1 0
+#define ONBOARD_BUZZER 14
+#define ADC_SAMPLES 1
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define ONBOARD_DEBOUNCE_TIME 20
+#define WIFI_TIMEOUT 5000
+#define MQTT_TIMEOUT 3000
+
+/**
+ * @brief Structure that contains WiFi connection status and IP address
+ * 
+ */
+struct wifiConnectionInfo
+{
+    int status;
+    IPAddress ipAddress;
+};
+
+class IoTaaP
+{
+public:
+    IoTaaP();
+
+    void blinkOnboardLed(int interval = 100, int loops = 1);
+    void makePinOutput(int pin);
+    void makePinInput(int pin);
+    void setPin(int pin);
+    void clearPin(int pin);
+    void initOLED();
+    void showTextOLED(String text, int x = 0, int y = 0);
+    void initBuzzer();
+    void buzzerTone(int freq = 1000, bool forever = false, int durationMs = 500);
+    void buzzerStop();
+    bool getBUT1();
+    unsigned long getAnalogValue(int pin);
+    void initSerial(unsigned long baud);
+    void printlnSerial(String string);
+    String getLnSerial();
+    wifiConnectionInfo connectToWifi(const char *ssid, const char *pass);
+    bool mqttConnect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user = '\0', const char *password = '\0');
+    uint16_t mqttKeepAlive();
+    bool mqttPublish(const char *topic, const char *payload);
+    void mqttSubscribe(const char *topic);
+
+private:
+    Adafruit_SSD1306 _display;
+    Bounce _debouncer;
+    WiFiClient _wifiClient;
+    PubSubClient _mqttPubSub;
+    bool _reconnectMQTT();
+    const char *_mqttclientID;
+    const char *_mqttuser;
+    const char *_mqttpassword;
+};
+
 #endif
