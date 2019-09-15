@@ -15,7 +15,7 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  * 
- * The above copyright notice and this permission notice shall be included in
+ * The above copyright notice and this permission notice must be included in
  * all copies or substantial portions of the Software.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -30,110 +30,46 @@
 #ifndef __IOTAAP_H__
 #define __IOTAAP_H__
 
-#include <Arduino.h>
-#include <Wire.h>
-#include "lib/3rd_party/AdafruitGFX/Adafruit_GFX.h"
-#include "lib/3rd_party/AdafruitSSD1306/Adafruit_SSD1306.h"
+// IoTaaP libs includes
+#include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
+#include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"
+#include "lib/iotaap/iotaap_accelerometer/IoTaaP_Accelerometer.h"
+#include "lib/iotaap/iotaap_oled/IoTaaP_OLED.h"
+#include "lib/iotaap/iotaap_buzzer/IoTaaP_Buzzer.h"
+#include "lib/iotaap/iotaap_hall/IoTaaP_Hall.h"
+#include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
+#include "lib/iotaap/iotaap_wifi/IoTaaP_WiFi.h"
+#include "lib/iotaap/iotaap_mqtt/IoTaaP_MQTT.h"
+#include "lib/iotaap/iotaap_tcp/IoTaaP_TCP.h"
+#include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
+#include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
+
+// 3rd party libs includes
 #include "lib/3rd_party/Debounce/Debounce.h"
-#include "WiFi.h"
-#include "lib/3rd_party/PubSubClient/PubSubClient.h"
-#ifdef BLUETOOTH_SERIAL_SUPPORT
-#include "lib/3rd_party/BluetoothSerial/BluetoothSerial.h"
-#endif
-
-#include "lib/iotaap/IoTaaP_OLED/iotaap_splash.h"
-
-#define ONBOARD_LED1 15
-#define ONBOARD_LED2 2
-#define ONBOARD_BUT1 0
-#define ONBOARD_BUT2 25
-#define BATSENS_PIN 36
-#define ONBOARD_BUZZER 32
-#define ADC_SAMPLES 1
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define ONBOARD_DEBOUNCE_TIME 20
-#define WIFI_TIMEOUT 5000
-#define MQTT_TIMEOUT 3000
-#define ACCELEROMETER_X_PIN 33
-#define ACCELEROMETER_Y_PIN 34
-#define ACCELEROMETER_Z_PIN 35
-
-/**
- * @brief Structure that contains WiFi connection status and IP address
- * 
- */
-struct wifiConnectionInfo
-{
-    int status;
-    IPAddress ipAddress;
-};
-
-/**
- * @brief Structure that contains accelerometer values
- * 
- */
-struct accelerometer
-{
-    uint16_t x;
-    uint16_t y;
-    uint16_t z;
-};
 
 class IoTaaP
 {
 public:
     IoTaaP();
 
-    void blinkOnboardLed(int LED, int interval = 100, int loops = 1);
-    void makePinOutput(int pin);
-    void makePinInput(int pin);
-    void setPin(int pin);
-    void clearPin(int pin);
-    void initOLED();
-    void showTextOLED(String text, int x = 0, int y = 0);
-    void initBuzzer();
-    void buzzerTone(int freq = 1000, bool forever = false, int durationMs = 500);
-    void buzzerStop();
-    bool getBUT1();
-    bool getBUT2();
-    unsigned long getAnalogValue(int pin);
-    void initSerial(unsigned long baud);
-    void printlnSerial(String string);
-    String getLnSerial();
-    wifiConnectionInfo connectToWifi(const char *ssid, const char *pass);
-    bool mqttConnect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user = '\0', const char *password = '\0');
-    uint16_t mqttKeepAlive();
-    bool mqttPublish(const char *topic, const char *payload);
-    void mqttSubscribe(const char *topic);
-    int scanWiFi();
-    String getScannedWiFi(uint8_t i);
-    IPAddress openWiFiAP(const char *ssid, const char *password = NULL);
-    WiFiClient openTCPconnection(const char *host, uint16_t port);
-    void sendTCP(const char *payload);
-    String readTCPstring(const char delimiter);
-    void closeTCP();
-    int readHall();
-    double getVoltage(int reading);
-    double getBatteryPercentage();
-    accelerometer getAccelerometerRaw();
-    void sleep(int seconds = 1);
-    void restart();
-    void setDAC(uint8_t value);
-    void setupPWM(uint8_t channel, double freq, uint8_t resolution, uint8_t pin);
-    void setPWM(uint8_t channel, uint32_t duty);
-    void displayBitmap(int16_t x, int16_t y, const uint8_t bitmap[], uint16_t color);
+    // IoTaaP libs
+    IoTaaP_Misc misc;
+    IoTaaP_ADC adc;
+    IoTaaP_Accelerometer accelerometer;
+    IoTaaP_OLED oled;
+    IoTaaP_Buzzer buzzer;
+    IoTaaP_Hall hall;
+    IoTaaP_Serial serial;
+    IoTaaP_WiFi wifi;
+    IoTaaP_MQTT mqtt;
+    IoTaaP_TCP tcp;
+    IoTaaP_DAC dac;
+    IoTaaP_PWM pwm;
+
+    // 3rd party libs
+    
 
 private:
-    Adafruit_SSD1306 _display;
-    Bounce _debouncer;
-    WiFiClient _wifiClient;
-    WiFiClient _tcpWifiClient;
-    PubSubClient _mqttPubSub;
-    bool _reconnectMQTT();
-    const char *_mqttclientID;
-    const char *_mqttuser;
-    const char *_mqttpassword;
 };
 
 #endif

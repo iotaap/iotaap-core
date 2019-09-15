@@ -1,0 +1,48 @@
+#include "IoTaaP_OLED.h"
+
+
+IoTaaP_OLED::IoTaaP_OLED():_display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1){
+
+}
+
+/**
+ * @brief Initializes integrated OLED
+ * 
+ */
+void IoTaaP_OLED::initOLED()
+{
+    this->_display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+    this->_display.clearDisplay();
+    this->_display.display();
+}
+
+/**
+ * @brief Shows text on integrated OLED. OLED must be initialized first
+ * 
+ * @param text Text to be printed
+ * @param x Text location on x coordinate
+ * @param y Text location on y coordinate
+ */
+void IoTaaP_OLED::showTextOLED(const String text, int x, int y)
+{
+    this->_display.clearDisplay();
+    this->_display.setTextSize(1);
+    this->_display.setTextColor(WHITE);
+    this->_display.setCursor(x, y);
+    this->_display.println(text);
+    this->_display.display();
+}
+
+/**
+ * @brief Displays bitmap on OLED. initOLED() must be called before
+ * 
+ * @param x Start X coordinate (usually 0)
+ * @param y Start Y coordinate (Usually 0)
+ * @param bitmap Bitmap to show
+ * @param color Bitmap color (usually 1)
+ */
+void IoTaaP_OLED::displayBitmap(int16_t x, int16_t y, const uint8_t bitmap[], uint16_t color)
+{
+    this->_display.drawBitmap(x, y, bitmap, SCREEN_WIDTH, SCREEN_HEIGHT, color);
+    this->_display.display();
+}
