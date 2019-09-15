@@ -3,17 +3,17 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_TCP{
-    public:
-
+class IoTaaP_TCP
+{
+public:
     IoTaaP_TCP();
 
-    WiFiClient openTCPconnection(const char *host, uint16_t port);
-    void sendTCP(const char *payload);
-    String readTCPstring(const char delimiter);
-    void closeTCP();
+    WiFiClient openConnection(const char *host, uint16_t port);
+    void send(const char *payload);
+    String readString(const char delimiter);
+    void close();
 
-    private:
+private:
     WiFiClient _tcpWifiClient;
 };
 

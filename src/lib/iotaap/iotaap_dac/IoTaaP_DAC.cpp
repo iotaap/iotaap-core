@@ -1,8 +1,11 @@
 #include "IoTaaP_DAC.h"
 
-
-IoTaaP_DAC::IoTaaP_DAC(){
-
+/**
+ * @brief Construct a new IoTaaP_DAC::IoTaaP_DAC object
+ * 
+ */
+IoTaaP_DAC::IoTaaP_DAC()
+{
 }
 
 /**
@@ -10,8 +13,7 @@ IoTaaP_DAC::IoTaaP_DAC(){
  * 
  * @param value DAC value (0-255)
  */
-void IoTaaP_DAC::setDAC(uint8_t value)
+void IoTaaP_DAC::set(uint8_t value)
 {
     dacWrite(DAC2, value);
 }
-

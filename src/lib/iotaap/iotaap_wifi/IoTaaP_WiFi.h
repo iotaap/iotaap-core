@@ -3,17 +3,17 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_WiFi{
-    public:
-
+class IoTaaP_WiFi
+{
+public:
     IoTaaP_WiFi();
 
-wifiConnectionInfo connectToWifi(const char *ssid, const char *pass);
-    int scanWiFi();
-    String getScannedWiFi(uint8_t i);
-    IPAddress openWiFiAP(const char *ssid, const char *password = NULL);
+    wifiConnectionInfo connect(const char *ssid, const char *pass);
+    int scan();
+    String getScanned(uint8_t i);
+    IPAddress openAP(const char *ssid, const char *password = NULL);
 
-    private:
+private:
 };
 
 #endif

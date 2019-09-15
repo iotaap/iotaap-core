@@ -1,5 +1,9 @@
 #include "IoTaaP_Misc.h"
 
+/**
+ * @brief Construct a new IoTaaP_Misc::IoTaaP_Misc object
+ * 
+ */
 IoTaaP_Misc::IoTaaP_Misc()
 {
     this->makePinOutput(ONBOARD_LED1);
@@ -102,7 +106,7 @@ bool IoTaaP_Misc::getBUT2()
  */
 double IoTaaP_Misc::getBatteryPercentage()
 {
-    return round(((this->adc.getVoltage(this->adc.getAnalogValue(BATSENS_PIN)) * 2) / 4.2) * 100);
+    return round(((this->adc.getVoltage(this->adc.getValue(BATSENS_PIN)) * 2) / 4.2) * 100);
 }
 
 /**

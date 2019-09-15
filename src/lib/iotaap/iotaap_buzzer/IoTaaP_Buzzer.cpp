@@ -1,7 +1,11 @@
 #include "IoTaaP_Buzzer.h"
 
-IoTaaP_Buzzer::IoTaaP_Buzzer(){
-
+/**
+ * @brief Construct a new IoTaaP_Buzzer::IoTaaP_Buzzer object
+ * 
+ */
+IoTaaP_Buzzer::IoTaaP_Buzzer()
+{
 }
 
 /**
@@ -21,13 +25,13 @@ void IoTaaP_Buzzer::initBuzzer()
  * @param forever If TRUE, tone will be reporduced until buzzerStop() is called
  * @param durationMs Tone duration, will be ignored if 'forever' is true
  */
-void IoTaaP_Buzzer::buzzerTone(int freq, bool forever, int durationMs)
+void IoTaaP_Buzzer::generateTone(int freq, bool forever, int durationMs)
 {
     ledcWriteTone(0, freq);
     if (!forever)
     {
         delay(durationMs);
-        this->buzzerStop();
+        this->stopTone();
     }
 }
 
@@ -35,7 +39,7 @@ void IoTaaP_Buzzer::buzzerTone(int freq, bool forever, int durationMs)
  * @brief Stops and detaches onboard buzzer. Buzzer must be initialized first.
  * 
  */
-void IoTaaP_Buzzer::buzzerStop()
+void IoTaaP_Buzzer::stopTone()
 {
     ledcDetachPin(ONBOARD_BUZZER);
     pinMode(ONBOARD_BUZZER, OUTPUT);

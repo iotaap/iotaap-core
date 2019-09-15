@@ -67,7 +67,6 @@ public:
     IoTaaP_PWM pwm;
 
     // 3rd party libs
-    
 
 private:
 };

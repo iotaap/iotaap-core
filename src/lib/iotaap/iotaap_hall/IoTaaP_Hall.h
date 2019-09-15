@@ -3,14 +3,14 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_Hall{
-    public:
-
+class IoTaaP_Hall
+{
+public:
     IoTaaP_Hall();
 
-    int readHall();
+    int read();
 
-    private:
+private:
 };
 
 #endif

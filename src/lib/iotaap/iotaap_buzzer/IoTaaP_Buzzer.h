@@ -3,16 +3,16 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_Buzzer{
-    public:
-    
+class IoTaaP_Buzzer
+{
+public:
     IoTaaP_Buzzer();
-        void initBuzzer();
-    void buzzerTone(int freq = 1000, bool forever = false, int durationMs = 500);
-    void buzzerStop();
+    
+    void initBuzzer();
+    void generateTone(int freq = 1000, bool forever = false, int durationMs = 500);
+    void stopTone();
 
-    private:
+private:
 };
-
 
 #endif

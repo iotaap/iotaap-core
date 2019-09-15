@@ -1,5 +1,9 @@
 #include "IoTaaP_ADC.h"
 
+/**
+ * @brief Construct a new IoTaaP_ADC::IoTaaP_ADC object
+ * 
+ */
 IoTaaP_ADC::IoTaaP_ADC()
 {
     analogSetSamples(ADC_SAMPLES);
@@ -11,7 +15,7 @@ IoTaaP_ADC::IoTaaP_ADC()
  * @param pin Andalog pin to read value from
  * @return unsigned long 12bit analog value
  */
-unsigned long IoTaaP_ADC::getAnalogValue(int pin)
+unsigned long IoTaaP_ADC::getValue(int pin)
 {
     return analogRead(pin);
 }

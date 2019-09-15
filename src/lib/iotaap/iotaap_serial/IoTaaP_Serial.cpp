@@ -1,17 +1,19 @@
 #include "IoTaaP_Serial.h"
 
-IoTaaP_Serial::IoTaaP_Serial(){
-
+/**
+ * @brief Construct a new IoTaaP_Serial::IoTaaP_Serial object
+ * 
+ */
+IoTaaP_Serial::IoTaaP_Serial()
+{
 }
 
-
-
-    /**
+/**
  * @brief Initializes UART port with specified baud
  * 
  * @param baud Valid baud rate
  */
-void IoTaaP_Serial::initSerial(unsigned long baud)
+void IoTaaP_Serial::init(unsigned long baud)
 {
     Serial.begin(baud);
 }
@@ -21,7 +23,7 @@ void IoTaaP_Serial::initSerial(unsigned long baud)
  * 
  * @param string Text to be printed
  */
-void IoTaaP_Serial::printlnSerial(String string)
+void IoTaaP_Serial::printLn(String string)
 {
     Serial.println(string);
 }
@@ -31,7 +33,7 @@ void IoTaaP_Serial::printlnSerial(String string)
  * 
  * @return String Returns one line of data received on UART
  */
-String IoTaaP_Serial::getLnSerial()
+String IoTaaP_Serial::getLn()
 {
     return Serial.readString();
 }

@@ -3,16 +3,16 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_Serial{
-    public:
-
+class IoTaaP_Serial
+{
+public:
     IoTaaP_Serial();
 
-       void initSerial(unsigned long baud);
-    void printlnSerial(String string);
-    String getLnSerial();
+    void init(unsigned long baud);
+    void printLn(String string);
+    String getLn();
 
-    private:
+private:
 };
 
 #endif

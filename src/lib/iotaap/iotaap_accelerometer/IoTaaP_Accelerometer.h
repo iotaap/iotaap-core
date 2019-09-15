@@ -4,15 +4,15 @@
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 #include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"
 
-class IoTaaP_Accelerometer{
-    public:
+class IoTaaP_Accelerometer
+{
+public:
     IoTaaP_Accelerometer();
 
     IoTaaP_ADC adc;
-    accelerometer getAccelerometerRaw();
+    accelerometer getRaw();
 
-    private:
+private:
 };
-
 
 #endif

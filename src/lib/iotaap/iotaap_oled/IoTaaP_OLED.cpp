@@ -1,15 +1,18 @@
 #include "IoTaaP_OLED.h"
 
-
-IoTaaP_OLED::IoTaaP_OLED():_display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1){
-
+/**
+ * @brief Construct a new IoTaaP_OLED::IoTaaP_OLED object
+ * 
+ */
+IoTaaP_OLED::IoTaaP_OLED() : _display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1)
+{
 }
 
 /**
  * @brief Initializes integrated OLED
  * 
  */
-void IoTaaP_OLED::initOLED()
+void IoTaaP_OLED::init()
 {
     this->_display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     this->_display.clearDisplay();
@@ -23,7 +26,7 @@ void IoTaaP_OLED::initOLED()
  * @param x Text location on x coordinate
  * @param y Text location on y coordinate
  */
-void IoTaaP_OLED::showTextOLED(const String text, int x, int y)
+void IoTaaP_OLED::showText(const String text, int x, int y)
 {
     this->_display.clearDisplay();
     this->_display.setTextSize(1);

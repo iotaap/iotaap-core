@@ -14,7 +14,6 @@ public:
     IoTaaP_Misc();
 
     IoTaaP_ADC adc;
-
     void blinkOnboardLed(int LED, int interval = 100, int loops = 1);
     void makePinOutput(int pin);
     void makePinInput(int pin);

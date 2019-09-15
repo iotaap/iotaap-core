@@ -3,14 +3,14 @@
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 
-class IoTaaP_DAC{
-    public:
-    
+class IoTaaP_DAC
+{
+public:
     IoTaaP_DAC();
 
-    void setDAC(uint8_t value);
+    void set(uint8_t value);
 
-    private:
+private:
 };
 
 #endif

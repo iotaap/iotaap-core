@@ -1,7 +1,11 @@
 #include "IoTaaP_WiFi.h"
 
-IoTaaP_WiFi::IoTaaP_WiFi(){
-
+/**
+ * @brief Construct a new IoTaaP_WiFi::IoTaaP_WiFi object
+ * 
+ */
+IoTaaP_WiFi::IoTaaP_WiFi()
+{
 }
 
 /**
@@ -11,7 +15,7 @@ IoTaaP_WiFi::IoTaaP_WiFi(){
  * @param pass AP Password
  * @return wifiConnectionInfo Returns structure containing status 1 and IP address if connected successfully, or status -1 and IP 0.0.0.0 if there was a problem
  */
-wifiConnectionInfo IoTaaP_WiFi::connectToWifi(const char *ssid, const char *pass)
+wifiConnectionInfo IoTaaP_WiFi::connect(const char *ssid, const char *pass)
 {
     wifiConnectionInfo connectionInfo;
     int timeoutCounter = 0;
@@ -42,7 +46,7 @@ wifiConnectionInfo IoTaaP_WiFi::connectToWifi(const char *ssid, const char *pass
  * 
  * @return int Number of networks discovered
  */
-int IoTaaP_WiFi::scanWiFi()
+int IoTaaP_WiFi::scan()
 {
     WiFi.mode(WIFI_STA);
     WiFi.disconnect();
@@ -57,7 +61,7 @@ int IoTaaP_WiFi::scanWiFi()
  * @param i Specify from which network item want to get the information
  * @return String SSID string of the specified item on the networks scanned list
  */
-String IoTaaP_WiFi::getScannedWiFi(uint8_t i)
+String IoTaaP_WiFi::getScanned(uint8_t i)
 {
     return WiFi.SSID(i);
 }
@@ -69,7 +73,7 @@ String IoTaaP_WiFi::getScannedWiFi(uint8_t i)
  * @param password AP Password (optional)
  * @return IPAddress Returns local IP address if successfully opened or empty IPAddress if not
  */
-IPAddress IoTaaP_WiFi::openWiFiAP(const char *ssid, const char *password)
+IPAddress IoTaaP_WiFi::openAP(const char *ssid, const char *password)
 {
 
     if (password == NULL)

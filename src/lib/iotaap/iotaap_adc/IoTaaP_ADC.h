@@ -9,7 +9,7 @@ class IoTaaP_ADC
 public:
     IoTaaP_ADC();
 
-    unsigned long getAnalogValue(int pin);
+    unsigned long getValue(int pin);
     double getVoltage(int reading);
 
 private:

@@ -1,7 +1,11 @@
 #include "IoTaaP_MQTT.h"
 
-IoTaaP_MQTT::IoTaaP_MQTT(){
-
+/**
+ * @brief Construct a new IoTaaP_MQTT::IoTaaP_MQTT object
+ * 
+ */
+IoTaaP_MQTT::IoTaaP_MQTT()
+{
 }
 
 /**
@@ -15,7 +19,7 @@ IoTaaP_MQTT::IoTaaP_MQTT(){
  * @return true if successfully connected
  * @return false if there was a problem
  */
-bool IoTaaP_MQTT::mqttConnect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user, const char *password)
+bool IoTaaP_MQTT::connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user, const char *password)
 {
     this->_mqttclientID = clientID;
     this->_mqttuser = user;
@@ -78,7 +82,7 @@ bool IoTaaP_MQTT::_reconnectMQTT()
  * 
  * @return uint16_t Returns 2 if succesfully reconnected, returns 0 if there was a problem and returns 1 if already connected
  */
-uint16_t IoTaaP_MQTT::mqttKeepAlive()
+uint16_t IoTaaP_MQTT::keepAlive()
 {
     if (!this->_mqttPubSub.connected())
     {
@@ -103,7 +107,7 @@ uint16_t IoTaaP_MQTT::mqttKeepAlive()
  * @return true if successfully connected
  * @return false if there was a problem
  */
-bool IoTaaP_MQTT::mqttPublish(const char *topic, const char *payload)
+bool IoTaaP_MQTT::publish(const char *topic, const char *payload)
 {
     return this->_mqttPubSub.publish(topic, payload);
 }
@@ -113,7 +117,7 @@ bool IoTaaP_MQTT::mqttPublish(const char *topic, const char *payload)
  * 
  * @param topic Topic name
  */
-void IoTaaP_MQTT::mqttSubscribe(const char *topic)
+void IoTaaP_MQTT::subscribe(const char *topic)
 {
     this->_mqttPubSub.subscribe(topic);
 }

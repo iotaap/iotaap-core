@@ -1,7 +1,11 @@
 #include "IoTaaP_Accelerometer.h"
 
-IoTaaP_Accelerometer::IoTaaP_Accelerometer(){
-
+/**
+ * @brief Construct a new IoTaaP_Accelerometer::IoTaaP_Accelerometer object
+ * 
+ */
+IoTaaP_Accelerometer::IoTaaP_Accelerometer()
+{
 }
 
 /**
@@ -9,13 +13,13 @@ IoTaaP_Accelerometer::IoTaaP_Accelerometer(){
  * 
  * @return accelerometer Structure with x,y,z values
  */
-accelerometer IoTaaP_Accelerometer::getAccelerometerRaw()
+accelerometer IoTaaP_Accelerometer::getRaw()
 {
     accelerometer acc;
 
-    acc.x = this->adc.getAnalogValue(ACCELEROMETER_X_PIN);
-    acc.y = this->adc.getAnalogValue(ACCELEROMETER_Y_PIN);
-    acc.z = this->adc.getAnalogValue(ACCELEROMETER_Z_PIN);
+    acc.x = this->adc.getValue(ACCELEROMETER_X_PIN);
+    acc.y = this->adc.getValue(ACCELEROMETER_Y_PIN);
+    acc.z = this->adc.getValue(ACCELEROMETER_Z_PIN);
 
     return acc;
 }

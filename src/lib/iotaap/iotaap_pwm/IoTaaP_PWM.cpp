@@ -1,7 +1,11 @@
 #include "IoTaaP_PWM.h"
 
-IoTaaP_PWM::IoTaaP_PWM(){
-
+/**
+ * @brief Construct a new IoTaaP_PWM::IoTaaP_PWM object
+ * 
+ */
+IoTaaP_PWM::IoTaaP_PWM()
+{
 }
 
 /**
@@ -12,7 +16,7 @@ IoTaaP_PWM::IoTaaP_PWM(){
  * @param resolution PWM resolution (1-16)
  * @param pin PWM pin
  */
-void IoTaaP_PWM::setupPWM(uint8_t channel, double freq, uint8_t resolution, uint8_t pin)
+void IoTaaP_PWM::setup(uint8_t channel, double freq, uint8_t resolution, uint8_t pin)
 {
     ledcSetup(channel, freq, resolution);
     ledcAttachPin(pin, channel);
@@ -24,7 +28,7 @@ void IoTaaP_PWM::setupPWM(uint8_t channel, double freq, uint8_t resolution, uint
  * @param channel Preset PWM channel
  * @param duty PWM duty cycle
  */
-void IoTaaP_PWM::setPWM(uint8_t channel, uint32_t duty)
+void IoTaaP_PWM::set(uint8_t channel, uint32_t duty)
 {
     ledcWrite(channel, duty);
 }

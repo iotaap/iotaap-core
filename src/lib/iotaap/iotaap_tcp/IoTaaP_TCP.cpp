@@ -1,7 +1,11 @@
 #include "IoTaaP_TCP.h"
 
-IoTaaP_TCP::IoTaaP_TCP(){
-
+/**
+ * @brief Construct a new IoTaaP_TCP::IoTaaP_TCP object
+ * 
+ */
+IoTaaP_TCP::IoTaaP_TCP()
+{
 }
 
 /**
@@ -11,7 +15,7 @@ IoTaaP_TCP::IoTaaP_TCP(){
  * @param port Host port
  * @return WiFiClient Returns configured WiFiClient object or empty object if there was a problem
  */
-WiFiClient IoTaaP_TCP::openTCPconnection(const char *host, uint16_t port)
+WiFiClient IoTaaP_TCP::openConnection(const char *host, uint16_t port)
 {
 
     if (!this->_tcpWifiClient.connect(host, port))
@@ -26,7 +30,7 @@ WiFiClient IoTaaP_TCP::openTCPconnection(const char *host, uint16_t port)
  * 
  * @param payload Payload to be sent
  */
-void IoTaaP_TCP::sendTCP(const char *payload)
+void IoTaaP_TCP::send(const char *payload)
 {
     this->_tcpWifiClient.print(payload);
 }
@@ -37,7 +41,7 @@ void IoTaaP_TCP::sendTCP(const char *payload)
  * @param delimiter Delimiter character
  * @return String Returns received payload
  */
-String IoTaaP_TCP::readTCPstring(const char delimiter)
+String IoTaaP_TCP::readString(const char delimiter)
 {
     return this->_tcpWifiClient.readStringUntil(delimiter);
 }
@@ -46,7 +50,7 @@ String IoTaaP_TCP::readTCPstring(const char delimiter)
  * @brief Closes opened TCP connection
  * 
  */
-void IoTaaP_TCP::closeTCP()
+void IoTaaP_TCP::close()
 {
     this->_tcpWifiClient.stop();
 }
