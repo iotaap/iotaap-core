@@ -7,23 +7,26 @@
 IoTaaP::IoTaaP() : _display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1)
 {
     analogSetSamples(ADC_SAMPLES);
-    this->makePinOutput(ONBOARD_LED);
+    this->makePinOutput(ONBOARD_LED1);
+    this->makePinOutput(ONBOARD_LED2);
     this->makePinInput(ONBOARD_BUT1);
+    this->makePinInput(ONBOARD_BUT2);
 }
 
 /**
  * @brief Blinks onboard LED for given interval and repeats loop 
  * 
+ * @param LED Onboard LED, can be ONBOARD_LED1 or ONBOARD_LED2
  * @param interval Time in ms between LED states
  * @param loops Number of loops to repeat
  */
-void IoTaaP::blinkOnboardLed(int interval, int loops)
+void IoTaaP::blinkOnboardLed(int LED, int interval, int loops)
 {
     for (int i = 0; i < loops; i++)
     {
-        this->setPin(ONBOARD_LED);
+        this->setPin(LED);
         delay(interval);
-        this->clearPin(ONBOARD_LED);
+        this->clearPin(LED);
         delay(interval);
     }
 }
@@ -144,12 +147,23 @@ void IoTaaP::buzzerStop()
 /**
  * @brief Reads state of Button1 
  * 
- * @return true if not pressed
- * @return false if pressed
+ * @return true if pressed
+ * @return false if not pressed
  */
 bool IoTaaP::getBUT1()
 {
-    return digitalRead(ONBOARD_BUT1);
+    return !digitalRead(ONBOARD_BUT1);
+}
+
+/**
+ * @brief Reads state of Button2 
+ * 
+ * @return true if pressed
+ * @return false if not pressed
+ */
+bool IoTaaP::getBUT2()
+{
+    return !digitalRead(ONBOARD_BUT2);
 }
 
 /**
@@ -296,7 +310,7 @@ bool IoTaaP::_reconnectMQTT()
 }
 
 /**
- * @brief Keep the connection with MQTT alive, and recconect if lost
+ * @brief Keep the connection with MQTT alive, and reconnect if lost. Should be put in the main loop
  * 
  * @return uint16_t Returns 2 if succesfully reconnected, returns 0 if there was a problem and returns 1 if already connected
  */
@@ -312,13 +326,13 @@ uint16_t IoTaaP::mqttKeepAlive()
         {
             return 0;
         }
-    } 
+    }
     this->_mqttPubSub.loop();
     return 1;
 }
 
 /**
- * @brief Publis payload to the specified topic
+ * @brief Publish payload to the specified topic
  * 
  * @param topic MQTT topic
  * @param payload MQTT topic payload
@@ -338,4 +352,222 @@ bool IoTaaP::mqttPublish(const char *topic, const char *payload)
 void IoTaaP::mqttSubscribe(const char *topic)
 {
     this->_mqttPubSub.subscribe(topic);
+}
+
+/**
+ * @brief Scans for open WiFi networks and returns number of networks discovered
+ * 
+ * @return int Number of networks discovered
+ */
+int IoTaaP::scanWiFi()
+{
+    WiFi.mode(WIFI_STA);
+    WiFi.disconnect();
+    delay(100);
+
+    return WiFi.scanNetworks();
+}
+
+/**
+ * @brief Returns SSID of discovered network
+ * 
+ * @param i Specify from which network item want to get the information
+ * @return String SSID string of the specified item on the networks scanned list
+ */
+String IoTaaP::getScannedWiFi(uint8_t i)
+{
+    return WiFi.SSID(i);
+}
+
+/**
+ * @brief Opens WiFi access point with provided credentials. If password is not provided AP will be open
+ * 
+ * @param ssid AP SSID
+ * @param password AP Password (optional)
+ * @return IPAddress Returns local IP address if successfully opened or empty IPAddress if not
+ */
+IPAddress IoTaaP::openWiFiAP(const char *ssid, const char *password)
+{
+
+    if (password == NULL)
+    {
+        if (WiFi.softAP(ssid))
+        {
+            return WiFi.softAPIP();
+        }
+    }
+    else
+    {
+        if (WiFi.softAP(ssid, password))
+        {
+            return WiFi.softAPIP();
+        }
+    }
+
+    return IPAddress();
+}
+
+/**
+ * @brief Opens TCP connection on given host and port
+ * 
+ * @param host Host IP or DNS
+ * @param port Host port
+ * @return WiFiClient Returns configured WiFiClient object or empty object if there was a problem
+ */
+WiFiClient IoTaaP::openTCPconnection(const char *host, uint16_t port)
+{
+
+    if (!this->_tcpWifiClient.connect(host, port))
+    {
+        return WiFiClient();
+    }
+    return this->_tcpWifiClient;
+}
+
+/**
+ * @brief Sends payload to opened TCP connection
+ * 
+ * @param payload Payload to be sent
+ */
+void IoTaaP::sendTCP(const char *payload)
+{
+    this->_tcpWifiClient.print(payload);
+}
+
+/**
+ * @brief Reads string from TCP until delimiter is received
+ * 
+ * @param delimiter Delimiter character
+ * @return String Returns received payload
+ */
+String IoTaaP::readTCPstring(const char delimiter)
+{
+    return this->_tcpWifiClient.readStringUntil(delimiter);
+}
+
+/**
+ * @brief Closes opened TCP connection
+ * 
+ */
+void IoTaaP::closeTCP()
+{
+    this->_tcpWifiClient.stop();
+}
+
+/**
+ * @brief Reads onboard hall sensor value
+ * 
+ * @return int Value for HALL sensor (without LNA)
+ */
+int IoTaaP::readHall()
+{
+    return hallRead();
+}
+
+/**
+ * @brief Returns voltage (V) from A/D reading
+ * 
+ * @param reading RAW A/D reading (0-4095);
+ * @return double Calculated calibrated voltage
+ */
+double IoTaaP::getVoltage(int reading)
+{
+    if (reading < 1 || reading > 4095)
+        return 0;
+    return (-0.000000000000016 * pow(reading, 4) + 0.000000000118171 * pow(reading, 3) - 0.000000301211691 * pow(reading, 2) + 0.001109019271794 * reading + 0.034143524634089);
+}
+
+/**
+ * @brief Returns current battery percentage
+ * 
+ * @return double Battery percentage
+ */
+double IoTaaP::getBatteryPercentage()
+{
+    return round(((this->getVoltage(this->getAnalogValue(BATSENS_PIN)) * 2) / 4.2) * 100);
+}
+
+/**
+ * @brief Returns RAW (0-4095) values of accelerometer x,y,z axes
+ * 
+ * @return accelerometer Structure with x,y,z values
+ */
+accelerometer IoTaaP::getAccelerometerRaw()
+{
+    accelerometer acc;
+
+    acc.x = this->getAnalogValue(ACCELEROMETER_X_PIN);
+    acc.y = this->getAnalogValue(ACCELEROMETER_Y_PIN);
+    acc.z = this->getAnalogValue(ACCELEROMETER_Z_PIN);
+
+    return acc;
+}
+
+/**
+ * @brief Deep sleep with timer Wake Up after defined time in seconds (default 1);
+ * 
+ * @param seconds Time in seconds
+ */
+void IoTaaP::sleep(int seconds)
+{
+    esp_sleep_enable_timer_wakeup(seconds * 1000000);
+    esp_deep_sleep_start();
+}
+
+/**
+ * @brief Restarts IoTaaP
+ * 
+ */
+void IoTaaP::restart()
+{
+    esp_restart();
+}
+
+/**
+ * @brief Sets onboard DAC output
+ * 
+ * @param value DAC value (0-255)
+ */
+void IoTaaP::setDAC(uint8_t value)
+{
+    dacWrite(DAC2, value);
+}
+
+/**
+ * @brief Setups the PWM channel, and attaches pin
+ * 
+ * @param channel PWM channel (1-15)
+ * @param freq PWM Frequency
+ * @param resolution PWM resolution (1-16)
+ * @param pin PWM pin
+ */
+void IoTaaP::setupPWM(uint8_t channel, double freq, uint8_t resolution, uint8_t pin)
+{
+    ledcSetup(channel, freq, resolution);
+    ledcAttachPin(pin, channel);
+}
+
+/**
+ * @brief Sets PWM duty cycle to PWM channel. setupPWM() must be called before
+ * 
+ * @param channel Preset PWM channel
+ * @param duty PWM duty cycle
+ */
+void IoTaaP::setPWM(uint8_t channel, uint32_t duty)
+{
+    ledcWrite(channel, duty);
+}
+
+/**
+ * @brief Displays bitmap on OLED. initOLED() must be called before
+ * 
+ * @param x Start X coordinate (usually 0)
+ * @param y Start Y coordinate (Usually 0)
+ * @param bitmap Bitmap to show
+ * @param color Bitmap color (usually 1)
+ */
+void IoTaaP::displayBitmap(int16_t x, int16_t y, const uint8_t bitmap[], uint16_t color)
+{
+    this->_display.drawBitmap(x, y, bitmap, SCREEN_WIDTH, SCREEN_HEIGHT, color);
+    this->_display.display();
 }
