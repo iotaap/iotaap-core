@@ -7,7 +7,25 @@ Include IoTaaP.h in your main project
 
 ## Usage example
 
-TODO - Add example code here
+```
+#include "IoTaaP.h"
+
+IoTaaP iotaap;
+```
+
+## Hardware
+
+Use official [IoTaaP Hardware modules](https://iotaap.mvt-solutions.com/)
+
+* [IoTaaP Magnolia](https://iotaap.mvt-solutions.com/platform/)
+
+## Instructions
+
+Follow [official instructions](https://iotaap.mvt-solutions.com/build/) for even faster IoT development process!
+
+## Community
+
+Join [IoTaaP community](https://iotaap.com/) today!
 
 ## Authors
 
@@ -20,8 +38,4 @@ Distributed under the MIT License. See ``LICENSE`` for more information.
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b feature/spaceship`)
-3. Commit your changes (`git commit -am 'Add spaceship feature'`)
-4. Push to the branch (`git push origin feature/spaceship`)
-5. Create a new Pull Request
+See ``CONTRIBUTING`` for more information.

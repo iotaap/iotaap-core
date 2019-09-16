@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 Initial version
  
 ### Added
+
+Initial features, documentation, and example.
  
 ### Changed
    
