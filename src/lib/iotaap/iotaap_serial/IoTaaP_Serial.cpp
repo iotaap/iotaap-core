@@ -29,11 +29,22 @@ void IoTaaP_Serial::printLn(String string)
 }
 
 /**
- * @brief Reads one line from UART
+ * @brief Reads data from UART. This function is non-blocking and it will break if delimiter is not received within 1000mS after the last character.
  * 
- * @return String Returns one line of data received on UART
+ * @return String Returns data received on UART
  */
-String IoTaaP_Serial::getLn()
+String IoTaaP_Serial::getString()
 {
     return Serial.readString();
+}
+
+/**
+ * @brief Reads data from UART until delimiter char received. This function is non-blocking and it will break if delimiter is not received within 1000mS after the last character.
+ * 
+ * @param delimiter Termination character
+ * @return String Returns data received on UART
+ */
+String IoTaaP_Serial::getStringUntil(char delimiter)
+{
+    return Serial.readStringUntil(delimiter);
 }

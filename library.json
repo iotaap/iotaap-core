@@ -10,12 +10,12 @@
   "authors":
   [
     {
-      "name": "Ivan Golubic",
-      "email": "ivan@mvt-solutions.com",
+      "name": "MVT Solutions",
+      "email": "solutions@mvt-solutions.com",
       "url": "https://www.mvt-solutions.com",
       "maintainer": true
     }
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "frameworks": "arduino"
 }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IoTaaP: IoTaaP-Library/lib/iotaap/src/lib/iotaap/iotaap_serial/IoTaaP_Serial.h Source File</title>
+<title>IoTaaP: C:/Users/ivan/Google Drive/Mepigu - IoTaaP/IoTaaP-Library/lib/iotaap/src/lib/iotaap/iotaap_serial/IoTaaP_Serial.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IoTaaP
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.2</span>
    </div>
   </td>
  </tr>
@@ -79,15 +79,17 @@ $(document).ready(function(){initNavTree('_io_taa_p___serial_8h_source.html','')
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_io_taa_p___serial.html#a22635b52087201897d4ef12b679c1945">init</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> baud);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_io_taa_p___serial.html#a7d2234b89c5ba0b4898ca80275033999">printLn</a>(String <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    String <a class="code" href="class_io_taa_p___serial.html#ae655e7cbed0bbfe955ba2fce2669e3f1">getLn</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    String <a class="code" href="class_io_taa_p___serial.html#a0550ddc3815e6aa70938865ec280fda1">getString</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    String <a class="code" href="class_io_taa_p___serial.html#a71fa16df7d456a254e083f4beacda59d">getStringUntil</a>(<span class="keywordtype">char</span> delimiter);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_io_taa_p___serial_html_ae655e7cbed0bbfe955ba2fce2669e3f1"><div class="ttname"><a href="class_io_taa_p___serial.html#ae655e7cbed0bbfe955ba2fce2669e3f1">IoTaaP_Serial::getLn</a></div><div class="ttdeci">String getLn()</div><div class="ttdoc">Reads one line from UART.</div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.cpp:36</div></div>
+<div class="ttc" id="aclass_io_taa_p___serial_html_a0550ddc3815e6aa70938865ec280fda1"><div class="ttname"><a href="class_io_taa_p___serial.html#a0550ddc3815e6aa70938865ec280fda1">IoTaaP_Serial::getString</a></div><div class="ttdeci">String getString()</div><div class="ttdoc">Reads data from UART. This function is non-blocking and it will break if delimiter is not received wi...</div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.cpp:36</div></div>
+<div class="ttc" id="aclass_io_taa_p___serial_html_a71fa16df7d456a254e083f4beacda59d"><div class="ttname"><a href="class_io_taa_p___serial.html#a71fa16df7d456a254e083f4beacda59d">IoTaaP_Serial::getStringUntil</a></div><div class="ttdeci">String getStringUntil(char delimiter)</div><div class="ttdoc">Reads data from UART until delimiter char received. This function is non-blocking and it will break i...</div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.cpp:47</div></div>
 <div class="ttc" id="aclass_io_taa_p___serial_html"><div class="ttname"><a href="class_io_taa_p___serial.html">IoTaaP_Serial</a></div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.h:6</div></div>
 <div class="ttc" id="aclass_io_taa_p___serial_html_a22635b52087201897d4ef12b679c1945"><div class="ttname"><a href="class_io_taa_p___serial.html#a22635b52087201897d4ef12b679c1945">IoTaaP_Serial::init</a></div><div class="ttdeci">void init(unsigned long baud)</div><div class="ttdoc">Initializes UART port with specified baud.</div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.cpp:16</div></div>
 <div class="ttc" id="aclass_io_taa_p___serial_html_a684057b8cb6394df475d4d953117e19d"><div class="ttname"><a href="class_io_taa_p___serial.html#a684057b8cb6394df475d4d953117e19d">IoTaaP_Serial::IoTaaP_Serial</a></div><div class="ttdeci">IoTaaP_Serial()</div><div class="ttdoc">Construct a new IoTaaP_Serial::IoTaaP_Serial object.</div><div class="ttdef"><b>Definition:</b> IoTaaP_Serial.cpp:7</div></div>
@@ -95,7 +97,7 @@ $(document).ready(function(){initNavTree('_io_taa_p___serial_8h_source.html','')
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_ec1f2dc7a60cf8f9407b0f69b36ca253.html">IoTaaP-Library</a></li><li class="navelem"><a class="el" href="dir_bab519a729d328b52f02a2c31249fd24.html">lib</a></li><li class="navelem"><a class="el" href="dir_6983b7d5b9e1ba8add21e246fbbc79da.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_cefcbbc2a501a81b4857224422c96042.html">src</a></li><li class="navelem"><a class="el" href="dir_c2a24fdab606e0bd08bf378829d70013.html">lib</a></li><li class="navelem"><a class="el" href="dir_94e7eb0329414c8ab5a9083d8118727d.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_c37f01b2fe37f18ced78f50ae2749294.html">iotaap_serial</a></li><li class="navelem"><b>IoTaaP_Serial.h</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c85d3e3c5052e9ad9ce18c6863244a25.html">lib</a></li><li class="navelem"><a class="el" href="dir_857a421b5a7eb3ffca222b461d4e906f.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_bf3a9a6df387f90bd19c3ef67548fa55.html">iotaap_serial</a></li><li class="navelem"><b>IoTaaP_Serial.h</b></li>
   </ul>
 </div>
 </body>
