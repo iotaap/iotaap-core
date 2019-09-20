@@ -25,8 +25,8 @@ wifiConnectionInfo IoTaaP_WiFi::connect(const char *ssid, const char *pass)
 
     while (WiFi.status() != WL_CONNECTED)
     {
-        delay(500);
-        timeoutCounter = (timeoutCounter + 1) / 2;
+        delay(1);
+        timeoutCounter = timeoutCounter + 1;
         if (timeoutCounter >= WIFI_TIMEOUT)
         {
             connectionInfo.status = -1;
