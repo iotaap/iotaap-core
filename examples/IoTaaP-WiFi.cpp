@@ -34,7 +34,7 @@ void setup()
   wifiConnectionInfo wifiInfo;
 
   // Connect to the SSID with Password (must be valid password)
-  wifiInfo = iotaap.wifi.connect(SSID, "cibulogi1");
+  wifiInfo = iotaap.wifi.connect(SSID, "password");
   delay(1000);
 
   // Check if IoTaaP is connected to the WiFi network
