@@ -67,7 +67,7 @@ String IoTaaP_WiFi::getScanned(uint8_t i)
 }
 
 /**
- * @brief Opens WiFi access point with provided credentials. If password is not provided AP will be open
+ * @brief Opens WiFi access point with provided credentials. If password is not provided AP will be open. AP IP: 192.168.8.1
  * 
  * @param ssid AP SSID
  * @param password AP Password (optional)
@@ -75,6 +75,7 @@ String IoTaaP_WiFi::getScanned(uint8_t i)
  */
 IPAddress IoTaaP_WiFi::openAP(const char *ssid, const char *password)
 {
+    WiFi.softAPConfig(IPAddress(192, 168, 8, 1), IPAddress(192, 168, 8, 100), IPAddress(255, 255, 255, 255));
 
     if (password == NULL)
     {

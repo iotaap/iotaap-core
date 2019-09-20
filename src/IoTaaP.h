@@ -72,6 +72,8 @@ public:
 
     // 3rd party libs
     BluetoothSerial btSerial;
+    WiFiServer wifiServer;
+    WiFiClient wifiClient;
 
 private:
 };
