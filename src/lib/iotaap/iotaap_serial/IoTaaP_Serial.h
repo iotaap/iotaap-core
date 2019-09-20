@@ -10,8 +10,11 @@ public:
 
     void init(unsigned long baud);
     void printLn(String string);
+    size_t writeChar(char ch);
     String getString();
     String getStringUntil(char delimiter);
+    int isAvailable();
+    int readChar();
 
 private:
 };

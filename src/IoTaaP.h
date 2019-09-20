@@ -43,9 +43,12 @@
 #include "lib/iotaap/iotaap_tcp/IoTaaP_TCP.h"
 #include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
+#include "lib/iotaap/iotaap_kai/IoTaaP_Kai.h"
 
 // 3rd party libs includes
 #include "lib/3rd_party/Debounce/Debounce.h"
+#include "BluetoothSerial.h"
+#include "lib/3rd_party/ArduinoJson/ArduinoJson-v6.12.0.h"
 
 class IoTaaP
 {
@@ -65,8 +68,10 @@ public:
     IoTaaP_TCP tcp;
     IoTaaP_DAC dac;
     IoTaaP_PWM pwm;
+    IoTaaP_Kai kai;
 
     // 3rd party libs
+    BluetoothSerial btSerial;
 
 private:
 };

@@ -48,3 +48,34 @@ String IoTaaP_Serial::getStringUntil(char delimiter)
 {
     return Serial.readStringUntil(delimiter);
 }
+
+/**
+ * @brief Checks if data is available on serial port
+ * 
+ * @return int Returns value different than 0 if true
+ */
+int IoTaaP_Serial::isAvailable()
+{
+    return Serial.available();
+}
+
+/**
+ * @brief Reads one character from UART buffer
+ * 
+ * @return int Character read
+ */
+int IoTaaP_Serial::readChar()
+{
+    return Serial.read();
+}
+
+/**
+ * @brief Writes one character to the UART
+ * 
+ * @param ch Character to be written
+ * @return size_t Number of written characters
+ */
+size_t IoTaaP_Serial::writeChar(char ch)
+{
+    return Serial.write(ch);
+}
