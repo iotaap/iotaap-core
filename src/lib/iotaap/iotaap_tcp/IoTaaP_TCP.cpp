@@ -9,13 +9,13 @@ IoTaaP_TCP::IoTaaP_TCP()
 }
 
 /**
- * @brief Opens TCP connection on given host and port
+ * @brief Connects to the TCP server
  * 
  * @param host Host IP or DNS
  * @param port Host port
  * @return WiFiClient Returns configured WiFiClient object or empty object if there was a problem
  */
-WiFiClient IoTaaP_TCP::openConnection(const char *host, uint16_t port)
+WiFiClient IoTaaP_TCP::connect(const char *host, uint16_t port)
 {
 
     if (!this->_tcpWifiClient.connect(host, port))

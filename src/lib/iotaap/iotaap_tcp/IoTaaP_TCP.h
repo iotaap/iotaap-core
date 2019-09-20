@@ -8,7 +8,7 @@ class IoTaaP_TCP
 public:
     IoTaaP_TCP();
 
-    WiFiClient openConnection(const char *host, uint16_t port);
+    WiFiClient connect(const char *host, uint16_t port);
     void send(const char *payload);
     String readString(const char delimiter);
     void close();
