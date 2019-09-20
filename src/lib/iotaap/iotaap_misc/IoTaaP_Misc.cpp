@@ -99,6 +99,10 @@ bool IoTaaP_Misc::getBUT2()
     return !digitalRead(ONBOARD_BUT2);
 }
 
+bool IoTaaP_Misc::getPin(int pin){
+    return digitalRead(pin);
+}
+
 /**
  * @brief Returns current battery percentage
  * 

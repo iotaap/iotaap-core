@@ -21,6 +21,7 @@ public:
     void clearPin(int pin);
     bool getBUT1();
     bool getBUT2();
+    bool getPin(int pin);
     double getBatteryPercentage();
     void sleep(int seconds = 1);
     void restart();
