@@ -3,28 +3,15 @@
 
 ## Usage
 
-Define used features before IoTaaP.h and include it in your project. All available features are listed in Features.h file.
+Define used special features before IoTaaP.h and include it in your project. All available special features are listed in SpecialFeatures.h file.
 
 ## Usage example
 
 ```
-#define ENABLE_ADC
-//#define ENABLE_ACCELEROMETER
-#define ENABLE_OLED
-//#define ENABLE_BUZZER
-//#define ENABLE_HALL
-//#define ENABLE_SERIAL
-#define ENABLE_WIFI
-#define ENABLE_MQTT
-//#define ENABLE_TCP
-//#define ENABLE_DAC
-//#define ENABLE_PWM
 //#define ENABLE_KAI
-//#define ENABLE_DEBOUNCE
+#define ENABLE_DEBOUNCE
 //#define ENABLE_BTSERIAL
-//#define ENABLE_JSON
-//#define ENABLE_TCPSERVER
-//#define ENABLE_TCPCLIENT
+#define ENABLE_JSON
 
 #include "IoTaaP.h"
 

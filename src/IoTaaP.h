@@ -32,39 +32,19 @@
 
 // IoTaaP libs includes
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
-#ifdef ENABLE_ADC
-#include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"
-#endif
-#ifdef ENABLE_ACCELEROMETER
-#include "lib/iotaap/iotaap_accelerometer/IoTaaP_Accelerometer.h"
-#endif
-#ifdef ENABLE_OLED
 #include "lib/iotaap/iotaap_oled/IoTaaP_OLED.h"
-#endif
-#ifdef ENABLE_BUZZER
-#include "lib/iotaap/iotaap_buzzer/IoTaaP_Buzzer.h"
-#endif
-#ifdef ENABLE_HALL
-#include "lib/iotaap/iotaap_hall/IoTaaP_Hall.h"
-#endif
-#ifdef ENABLE_SERIAL
-#include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
-#endif
-#ifdef ENABLE_WIFI
-#include "lib/iotaap/iotaap_wifi/IoTaaP_WiFi.h"
-#endif
-#ifdef ENABLE_MQTT
 #include "lib/iotaap/iotaap_mqtt/IoTaaP_MQTT.h"
-#endif
-#ifdef ENABLE_TCP
+#include "lib/iotaap/iotaap_wifi/IoTaaP_WiFi.h"
 #include "lib/iotaap/iotaap_tcp/IoTaaP_TCP.h"
-#endif
-#ifdef ENABLE_DAC
+#include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"
+#include "lib/iotaap/iotaap_accelerometer/IoTaaP_Accelerometer.h"
+#include "lib/iotaap/iotaap_buzzer/IoTaaP_Buzzer.h"
+#include "lib/iotaap/iotaap_hall/IoTaaP_Hall.h"
+#include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
 #include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
-#endif
-#ifdef ENABLE_PWM
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
-#endif
+#include "lib/3rd_party/Servo/Servo.h"
+
 #ifdef ENABLE_KAI
 #include "lib/iotaap/iotaap_kai/IoTaaP_Kai.h"
 #endif
@@ -87,39 +67,20 @@ public:
 
     // IoTaaP libs
     IoTaaP_Misc misc;
-    #ifdef ENABLE_ADC
-    IoTaaP_ADC adc;
-    #endif
-    #ifdef ENABLE_ACCELEROMETER
-    IoTaaP_Accelerometer accelerometer;
-    #endif
-    #ifdef ENABLE_OLED
     IoTaaP_OLED oled;
-    #endif
-    #ifdef ENABLE_BUZZER
-    IoTaaP_Buzzer buzzer;
-    #endif
-    #ifdef ENABLE_HALL
-    IoTaaP_Hall hall;
-    #endif
-    #ifdef ENABLE_SERIAL
-    IoTaaP_Serial serial;
-    #endif
-    #ifdef ENABLE_WIFI
-    IoTaaP_WiFi wifi;
-    #endif
-    #ifdef ENABLE_MQTT
     IoTaaP_MQTT mqtt;
-    #endif
-    #ifdef ENABLE_TCP
+    IoTaaP_WiFi wifi;
+    WiFiServer wifiServer;
+    WiFiClient wifiClient;
     IoTaaP_TCP tcp;
-    #endif
-    #ifdef ENABLE_DAC
+    IoTaaP_ADC adc;
+    IoTaaP_Accelerometer accelerometer;
+    IoTaaP_Buzzer buzzer;
+    IoTaaP_Hall hall;
+    IoTaaP_Serial serial;
     IoTaaP_DAC dac;
-    #endif
-    #ifdef ENABLE_PWM
     IoTaaP_PWM pwm;
-    #endif
+
     #ifdef ENABLE_KAI
     IoTaaP_Kai kai;
     #endif
@@ -127,12 +88,6 @@ public:
     // 3rd party libs
     #ifdef ENABLE_BTSERIAL
     BluetoothSerial btSerial;
-    #endif
-    #ifdef ENABLE_TCPSERVER
-    WiFiServer wifiServer;
-    #endif
-    #ifdef ENABLE_TCPCLIENT
-    WiFiClient wifiClient;
     #endif
 
 private:

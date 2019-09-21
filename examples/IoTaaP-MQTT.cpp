@@ -1,3 +1,5 @@
+#define ENABLE_JSON
+
 #include "IoTaaP.h"
 
 IoTaaP iotaap; // IoTaaP library
