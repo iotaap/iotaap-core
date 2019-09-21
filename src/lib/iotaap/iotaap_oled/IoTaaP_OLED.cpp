@@ -35,9 +35,39 @@ void IoTaaP_OLED::setBrightness(uint8_t perc)
         perc = 1;
     }
 
+    uint8_t _contrast = (uint8_t)411 * ((float)perc / 100);
+    this->_setContrast(_contrast);
+}
+
+/**
+ * @brief Set contrast using registers
+ * 
+ * @param contr Values from 1 - 411
+ */
+void IoTaaP_OLED::_setContrast(int contr)
+{
+    int prech;
+    int brigh;
+    switch (contr)
+    {
+    case 001 ... 255:
+        prech = 0;
+        brigh = contr;
+        break;
+    case 256 ... 411:
+        prech = 16;
+        brigh = contr - 156;
+        break;
+    default:
+        prech = 16;
+        brigh = 255;
+        break;
+    }
+
+    this->_display.ssd1306_command(SSD1306_SETPRECHARGE);
+    this->_display.ssd1306_command(prech);
     this->_display.ssd1306_command(SSD1306_SETCONTRAST);
-    uint8_t _perc = (uint8_t)255 * ((float)perc / 100);
-    this->_display.ssd1306_command(_perc);
+    this->_display.ssd1306_command(brigh);
 }
 
 /**

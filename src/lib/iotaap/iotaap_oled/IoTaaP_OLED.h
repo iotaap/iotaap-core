@@ -18,6 +18,7 @@ public:
 
 private:
     Adafruit_SSD1306 _display;
+    void _setContrast(int contr);
 };
 
 #endif
