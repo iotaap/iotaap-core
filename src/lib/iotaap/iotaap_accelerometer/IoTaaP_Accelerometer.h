@@ -9,10 +9,10 @@ class IoTaaP_Accelerometer
 public:
     IoTaaP_Accelerometer();
 
-    IoTaaP_ADC adc;
     accelerometer getRaw();
 
 private:
+    IoTaaP_ADC _adc;
 };
 
 #endif

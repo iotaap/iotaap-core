@@ -17,9 +17,9 @@ accelerometer IoTaaP_Accelerometer::getRaw()
 {
     accelerometer acc;
 
-    acc.x = this->adc.getValue(ACCELEROMETER_X_PIN);
-    acc.y = this->adc.getValue(ACCELEROMETER_Y_PIN);
-    acc.z = this->adc.getValue(ACCELEROMETER_Z_PIN);
+    acc.x = this->_adc.getValue(ACCELEROMETER_X_PIN);
+    acc.y = this->_adc.getValue(ACCELEROMETER_Y_PIN);
+    acc.z = this->_adc.getValue(ACCELEROMETER_Z_PIN);
 
     return acc;
 }
