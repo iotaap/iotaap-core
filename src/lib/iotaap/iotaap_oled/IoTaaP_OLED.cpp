@@ -20,6 +20,27 @@ void IoTaaP_OLED::init()
 }
 
 /**
+ * @brief Sets OLED brightness
+ * 
+ * @param perc Brightness percentage (0-100)
+ */
+void IoTaaP_OLED::setBrightness(uint8_t perc)
+{
+    if (perc >= 100)
+    {
+        perc = 100;
+    }
+    if (perc <= 0)
+    {
+        perc = 1;
+    }
+
+    this->_display.ssd1306_command(SSD1306_SETCONTRAST);
+    uint8_t _perc = (uint8_t)255 * ((float)perc / 100);
+    this->_display.ssd1306_command(_perc);
+}
+
+/**
  * @brief Shows text on integrated OLED. OLED must be initialized first
  * 
  * @param text Text to be printed

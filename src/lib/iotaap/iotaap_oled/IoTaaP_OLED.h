@@ -14,6 +14,7 @@ public:
     void init();
     void showText(String text, int x = 0, int y = 0);
     void displayBitmap(int16_t x, int16_t y, const uint8_t bitmap[], uint16_t color);
+    void setBrightness(uint8_t perc);
 
 private:
     Adafruit_SSD1306 _display;
