@@ -2,6 +2,7 @@
 #define __IOTAAP_MQTT_H__
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
+#include "WiFi.h"
 #include "lib/3rd_party/PubSubClient/PubSubClient.h"
 
 class IoTaaP_MQTT

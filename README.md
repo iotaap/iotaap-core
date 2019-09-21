@@ -1,13 +1,31 @@
 # IoTaaP - Internet of Things as a Platform
-> Connectivity platform that even a child can understand
+> Connectivity platform for rapid development
 
 ## Usage
 
-Include IoTaaP.h in your main project
+Define used features before IoTaaP.h and include it in your project. All available features are listed in Features.h file.
 
 ## Usage example
 
 ```
+#define ENABLE_ADC
+//#define ENABLE_ACCELEROMETER
+#define ENABLE_OLED
+//#define ENABLE_BUZZER
+//#define ENABLE_HALL
+//#define ENABLE_SERIAL
+#define ENABLE_WIFI
+#define ENABLE_MQTT
+//#define ENABLE_TCP
+//#define ENABLE_DAC
+//#define ENABLE_PWM
+//#define ENABLE_KAI
+//#define ENABLE_DEBOUNCE
+//#define ENABLE_BTSERIAL
+//#define ENABLE_JSON
+//#define ENABLE_TCPSERVER
+//#define ENABLE_TCPCLIENT
+
 #include "IoTaaP.h"
 
 IoTaaP iotaap;
@@ -22,6 +40,10 @@ Use official [IoTaaP Hardware modules](https://iotaap.mvt-solutions.com/)
 ## Instructions
 
 Follow [official instructions](https://iotaap.mvt-solutions.com/build/) for even faster IoT development process!
+
+## Documentation
+
+Official [documentation](https://iotaap.mvt-solutions.com/official-docs)
 
 ## Community
 

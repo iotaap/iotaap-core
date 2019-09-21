@@ -2,6 +2,7 @@
 #define __IOTAAP_OLED_H__
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
+#include <Wire.h>
 #include "lib/3rd_party/AdafruitSSD1306/Adafruit_SSD1306.h"
 #include "lib/3rd_party/AdafruitGFX/Adafruit_GFX.h"
 #include "iotaap_splash.h"

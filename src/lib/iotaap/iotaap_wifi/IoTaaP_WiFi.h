@@ -2,6 +2,7 @@
 #define __IOTAAP_WIFI_H__
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
+#include "WiFi.h"
 
 class IoTaaP_WiFi
 {

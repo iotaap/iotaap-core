@@ -2,8 +2,6 @@
 #define __IOTAAP_MISC_H__
 
 #include <Arduino.h>
-#include <Wire.h>
-#include "WiFi.h"
 #include "IoTaaP_Defines.h"
 #include "IoTaaP_Types.h"
 #include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"

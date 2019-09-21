@@ -36,6 +36,8 @@ Keep it consistent!
 
 - Main IoTaaP class is always located under src/IoTaaP.cpp and it should only contain the constructor
 - IoTaaP.h must include all local libs
+- Every feature inside IoTaaP.h must have #ifdef ENABLE_FEATURENAME #endif pair
+- Every feature COMMENTED #define directive (e.g. //#define ENABLE_TCPCLIENT) must be put into Features.h file
 - Dedicated IoTaaP libs should be put inside src/lib/iotaap/<iotaap_featurename>
 - 3rd party libs should be put inside src/lib/3rd_party/<FeatureDirectory>
 - Under <iotaap_featurename> directory put .cpp and .h files using the following naming convention: <IoTaaP_FeatureName.cpp>
