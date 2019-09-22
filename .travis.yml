@@ -1,0 +1,23 @@
+language: python
+python:
+    - "2.7"
+    - "3.6"
+
+sudo: false
+cache:
+    directories:
+        - "~/.platformio"
+
+env:
+    - PLATFORMIO_CI_SRC=examples/InitialCode PLATFORMIO_CI_EXTRA_ARGS="--board=esp32dev"
+    - PLATFORMIO_CI_SRC=examples/IoTaaP-WiFi PLATFORMIO_CI_EXTRA_ARGS="--board=esp32dev"
+    - PLATFORMIO_CI_SRC=examples/IoTaaP-MISC PLATFORMIO_CI_EXTRA_ARGS="--board=esp32dev"
+    - PLATFORMIO_CI_SRC=examples/IoTaaP-MQTT PLATFORMIO_CI_EXTRA_ARGS="--board=esp32dev"
+    - PLATFORMIO_CI_SRC=examples/IoTaaP-KAI PLATFORMIO_CI_EXTRA_ARGS="--board=esp32dev"
+
+install:
+    - pip install -U platformio
+    - platformio update
+
+script:
+    - platformio ci --lib="." $PLATFORMIO_CI_EXTRA_ARGS

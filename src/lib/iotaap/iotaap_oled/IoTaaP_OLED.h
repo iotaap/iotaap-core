@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include "lib/3rd_party/AdafruitSSD1306/Adafruit_SSD1306.h"
 #include "lib/3rd_party/AdafruitGFX/Adafruit_GFX.h"
-#include "iotaap_splash.h"
+#include "lib/iotaap/iotaap_oled/iotaap_splash.h"
 
 class IoTaaP_OLED
 {

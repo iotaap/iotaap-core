@@ -1,6 +1,8 @@
 # IoTaaP - Internet of Things as a Platform
 > Connectivity platform for rapid development
 
+[![Build Status](https://travis-ci.org/mvtsolutions/iotaap.svg?branch=master)](https://travis-ci.org/mvtsolutions/iotaap)
+
 ## Usage
 
 Define used special features before IoTaaP.h and include it in your project. All available special features are listed in SpecialFeatures.h file.
