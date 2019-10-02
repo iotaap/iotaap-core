@@ -32,7 +32,7 @@ void setup()
 {
   iotaap.wifi.connect("SSID", "PASSWORD");
 
-  iotaap.mqtt.connect("iotaap_client", "farmer.cloudmqtt.com", 00000, callback, "USERNAME", "PASSWORD");
+  iotaap.mqtt.connect("iotaap_client", "farmer.cloudmqtt.com", 00000, callback, false, "USERNAME", "PASSWORD");
   iotaap.mqtt.subscribe("ledstatus/led1");
 }
 

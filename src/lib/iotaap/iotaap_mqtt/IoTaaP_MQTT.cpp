@@ -14,18 +14,29 @@ IoTaaP_MQTT::IoTaaP_MQTT()
  * @param clientID Client ID that will be used in communication
  * @param server MQTT server IP address or URL
  * @param port MQTT port of the server
+ * @param secure If true MQTTS will be used and ca_cert is required, MQTT will be used by default
  * @param user Optional MQTT instance username
  * @param password Optional MQTT instance password 
+ * @param ca_cert CA Certificate or Root certificate used to verify SSH connection
  * @return true if successfully connected
  * @return false if there was a problem
  */
-bool IoTaaP_MQTT::connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user, const char *password)
+bool IoTaaP_MQTT::connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, bool secure, const char *user, const char *password, const char *ca_cert)
 {
+
     this->_mqttclientID = clientID;
     this->_mqttuser = user;
     this->_mqttpassword = password;
 
-    this->_mqttPubSub = PubSubClient(this->_wifiClient);
+    if (secure)
+    {
+        this->_wifiClientSecure.setCACert(ca_cert);
+        this->_mqttPubSub = PubSubClient(this->_wifiClientSecure);
+    }
+    else
+    {
+        this->_mqttPubSub = PubSubClient(this->_wifiClient);
+    }
 
     this->_mqttPubSub.setServer(server, port);
     this->_mqttPubSub.setCallback(callback);
