@@ -1,6 +1,24 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.0.4] - 2019-10-02
+  
+MQTT Updates
+ 
+### Added
+
+- Support for MQTTS
+- MQTTS example
+ 
+### Changed
+
+- MQTTS connect function
+- MQTT example
+- Documentation
+   
+### Fixed
+ 
+
 ## [0.0.3] - 2019-09-21
   
 Added various examples, special libraries and fixed WiFi issue

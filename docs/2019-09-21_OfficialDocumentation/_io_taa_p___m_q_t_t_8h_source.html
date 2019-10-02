@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IoTaaP: C:/Users/ivan/Google Drive/Mepigu - IoTaaP/IoTaaP-Library/lib/iotaap/src/lib/iotaap/iotaap_mqtt/IoTaaP_MQTT.h Source File</title>
+<title>IoTaaP: IoTaaP-Library/lib/iotaap/src/lib/iotaap/iotaap_mqtt/IoTaaP_MQTT.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IoTaaP
-   &#160;<span id="projectnumber">0.0.3</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
   </td>
  </tr>
@@ -73,39 +73,41 @@ $(document).ready(function(){initNavTree('_io_taa_p___m_q_t_t_8h_source.html',''
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;lib/iotaap/iotaap_misc/IoTaaP_Misc.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;WiFi.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;lib/3rd_party/PubSubClient/PubSubClient.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_io_taa_p___m_q_t_t.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_io_taa_p___m_q_t_t.html">IoTaaP_MQTT</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21">IoTaaP_MQTT</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#aa5b3fa02ad9369e7c0334655f6f72689">connect</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *clientID, <span class="keyword">const</span> <span class="keywordtype">char</span> *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, <span class="keyword">const</span> <span class="keywordtype">char</span> *user = <span class="charliteral">&#39;\0&#39;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *password = <span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    uint16_t <a class="code" href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">keepAlive</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#a2c7bfa204e2b8f1a0807e3869c890f67">publish</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *topic, <span class="keyword">const</span> <span class="keywordtype">char</span> *payload);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#a80100c1850cd1d9d3d0a341fbe7e4121">subscribe</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *topic);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    PubSubClient _mqttPubSub;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> _reconnectMQTT();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttclientID;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttuser;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttpassword;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    WiFiClient _wifiClient;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;WiFiClientSecure.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_io_taa_p___m_q_t_t.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_io_taa_p___m_q_t_t.html">IoTaaP_MQTT</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21">IoTaaP_MQTT</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#a05ff86a933d87b8110e49da8c0e42d41">connect</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *clientID, <span class="keyword">const</span> <span class="keywordtype">char</span> *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, <span class="keywordtype">bool</span> secure = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *user = <span class="charliteral">&#39;\0&#39;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *password = <span class="charliteral">&#39;\0&#39;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *ca_cert = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    uint16_t <a class="code" href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">keepAlive</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#a2c7bfa204e2b8f1a0807e3869c890f67">publish</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *topic, <span class="keyword">const</span> <span class="keywordtype">char</span> *payload);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_io_taa_p___m_q_t_t.html#a80100c1850cd1d9d3d0a341fbe7e4121">subscribe</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *topic);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    PubSubClient _mqttPubSub;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> _reconnectMQTT();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttclientID;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttuser;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *_mqttpassword;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    WiFiClientSecure _wifiClientSecure;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    WiFiClient _wifiClient;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a80100c1850cd1d9d3d0a341fbe7e4121"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a80100c1850cd1d9d3d0a341fbe7e4121">IoTaaP_MQTT::subscribe</a></div><div class="ttdeci">void subscribe(const char *topic)</div><div class="ttdoc">Subscribe to the MQTT topic.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:120</div></div>
-<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a9818ff9f99b6e0c95df30ea6508bc7d0"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">IoTaaP_MQTT::keepAlive</a></div><div class="ttdeci">uint16_t keepAlive()</div><div class="ttdoc">Keep the connection with MQTT alive, and reconnect if lost. Should be put in the main loop.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:85</div></div>
+<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a80100c1850cd1d9d3d0a341fbe7e4121"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a80100c1850cd1d9d3d0a341fbe7e4121">IoTaaP_MQTT::subscribe</a></div><div class="ttdeci">void subscribe(const char *topic)</div><div class="ttdoc">Subscribe to the MQTT topic.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:131</div></div>
+<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a05ff86a933d87b8110e49da8c0e42d41"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a05ff86a933d87b8110e49da8c0e42d41">IoTaaP_MQTT::connect</a></div><div class="ttdeci">bool connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, bool secure=false, const char *user='\0', const char *password='\0', const char *ca_cert=&quot;&quot;)</div><div class="ttdoc">Connects to the MQTT server on a desired port.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:24</div></div>
+<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a9818ff9f99b6e0c95df30ea6508bc7d0"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">IoTaaP_MQTT::keepAlive</a></div><div class="ttdeci">uint16_t keepAlive()</div><div class="ttdoc">Keep the connection with MQTT alive, and reconnect if lost. Should be put in the main loop.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:96</div></div>
 <div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_ae789fb8cf105387a8219b63590bdcd21"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21">IoTaaP_MQTT::IoTaaP_MQTT</a></div><div class="ttdeci">IoTaaP_MQTT()</div><div class="ttdoc">Construct a new IoTaaP_MQTT::IoTaaP_MQTT object.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:7</div></div>
-<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a2c7bfa204e2b8f1a0807e3869c890f67"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a2c7bfa204e2b8f1a0807e3869c890f67">IoTaaP_MQTT::publish</a></div><div class="ttdeci">bool publish(const char *topic, const char *payload)</div><div class="ttdoc">Publish payload to the specified topic.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:110</div></div>
-<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html">IoTaaP_MQTT</a></div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.h:8</div></div>
-<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_aa5b3fa02ad9369e7c0334655f6f72689"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#aa5b3fa02ad9369e7c0334655f6f72689">IoTaaP_MQTT::connect</a></div><div class="ttdeci">bool connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user='\0', const char *password='\0')</div><div class="ttdoc">Connects to the MQTT server on a desired port.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:22</div></div>
+<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html_a2c7bfa204e2b8f1a0807e3869c890f67"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html#a2c7bfa204e2b8f1a0807e3869c890f67">IoTaaP_MQTT::publish</a></div><div class="ttdeci">bool publish(const char *topic, const char *payload)</div><div class="ttdoc">Publish payload to the specified topic.</div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.cpp:121</div></div>
+<div class="ttc" id="aclass_io_taa_p___m_q_t_t_html"><div class="ttname"><a href="class_io_taa_p___m_q_t_t.html">IoTaaP_MQTT</a></div><div class="ttdef"><b>Definition:</b> IoTaaP_MQTT.h:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c85d3e3c5052e9ad9ce18c6863244a25.html">lib</a></li><li class="navelem"><a class="el" href="dir_857a421b5a7eb3ffca222b461d4e906f.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_917ce4ec0592b35594f5794c9621b6d5.html">iotaap_mqtt</a></li><li class="navelem"><b>IoTaaP_MQTT.h</b></li>
+    <li class="navelem"><a class="el" href="dir_ec1f2dc7a60cf8f9407b0f69b36ca253.html">IoTaaP-Library</a></li><li class="navelem"><a class="el" href="dir_bab519a729d328b52f02a2c31249fd24.html">lib</a></li><li class="navelem"><a class="el" href="dir_6983b7d5b9e1ba8add21e246fbbc79da.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_cefcbbc2a501a81b4857224422c96042.html">src</a></li><li class="navelem"><a class="el" href="dir_c2a24fdab606e0bd08bf378829d70013.html">lib</a></li><li class="navelem"><a class="el" href="dir_94e7eb0329414c8ab5a9083d8118727d.html">iotaap</a></li><li class="navelem"><a class="el" href="dir_0333ac64135ba7cfc013e3da874b6ff0.html">iotaap_mqtt</a></li><li class="navelem"><b>IoTaaP_MQTT.h</b></li>
   </ul>
 </div>
 </body>

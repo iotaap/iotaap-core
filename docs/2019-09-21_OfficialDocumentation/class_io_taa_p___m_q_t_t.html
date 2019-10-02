@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IoTaaP
-   &#160;<span id="projectnumber">0.0.3</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
   </td>
  </tr>
@@ -76,9 +76,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae789fb8cf105387a8219b63590bdcd21"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21">IoTaaP_MQTT</a> ()</td></tr>
 <tr class="memdesc:ae789fb8cf105387a8219b63590bdcd21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21" title="Construct a new IoTaaP_MQTT::IoTaaP_MQTT object.">IoTaaP_MQTT::IoTaaP_MQTT</a> object.  <a href="class_io_taa_p___m_q_t_t.html#ae789fb8cf105387a8219b63590bdcd21">More...</a><br /></td></tr>
 <tr class="separator:ae789fb8cf105387a8219b63590bdcd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b3fa02ad9369e7c0334655f6f72689"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_io_taa_p___m_q_t_t.html#aa5b3fa02ad9369e7c0334655f6f72689">connect</a> (const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, const char *user='\0', const char *password='\0')</td></tr>
-<tr class="memdesc:aa5b3fa02ad9369e7c0334655f6f72689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the MQTT server on a desired port.  <a href="class_io_taa_p___m_q_t_t.html#aa5b3fa02ad9369e7c0334655f6f72689">More...</a><br /></td></tr>
-<tr class="separator:aa5b3fa02ad9369e7c0334655f6f72689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ff86a933d87b8110e49da8c0e42d41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_io_taa_p___m_q_t_t.html#a05ff86a933d87b8110e49da8c0e42d41">connect</a> (const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, bool secure=false, const char *user='\0', const char *password='\0', const char *ca_cert=&quot;&quot;)</td></tr>
+<tr class="memdesc:a05ff86a933d87b8110e49da8c0e42d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the MQTT server on a desired port.  <a href="class_io_taa_p___m_q_t_t.html#a05ff86a933d87b8110e49da8c0e42d41">More...</a><br /></td></tr>
+<tr class="separator:a05ff86a933d87b8110e49da8c0e42d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9818ff9f99b6e0c95df30ea6508bc7d0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">keepAlive</a> ()</td></tr>
 <tr class="memdesc:a9818ff9f99b6e0c95df30ea6508bc7d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep the connection with MQTT alive, and reconnect if lost. Should be put in the main loop.  <a href="class_io_taa_p___m_q_t_t.html#a9818ff9f99b6e0c95df30ea6508bc7d0">More...</a><br /></td></tr>
 <tr class="separator:a9818ff9f99b6e0c95df30ea6508bc7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,8 +110,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa5b3fa02ad9369e7c0334655f6f72689"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5b3fa02ad9369e7c0334655f6f72689">&#9670;&nbsp;</a></span>connect()</h2>
+<a id="a05ff86a933d87b8110e49da8c0e42d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ff86a933d87b8110e49da8c0e42d41">&#9670;&nbsp;</a></span>connect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,6 +143,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>secure</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>user</em> = <code>'\0'</code>, </td>
         </tr>
@@ -150,7 +156,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>password</em> = <code>'\0'</code>&#160;</td>
+          <td class="paramname"><em>password</em> = <code>'\0'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ca_cert</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -166,8 +178,10 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">clientID</td><td>Client ID that will be used in communication </td></tr>
     <tr><td class="paramname">server</td><td>MQTT server IP address or URL </td></tr>
     <tr><td class="paramname">port</td><td>MQTT port of the server </td></tr>
+    <tr><td class="paramname">secure</td><td>If true MQTTS will be used and ca_cert is required, MQTT will be used by default </td></tr>
     <tr><td class="paramname">user</td><td>Optional MQTT instance username </td></tr>
     <tr><td class="paramname">password</td><td>Optional MQTT instance password </td></tr>
+    <tr><td class="paramname">ca_cert</td><td>CA Certificate or Root certificate used to verify SSH connection </td></tr>
   </table>
   </dd>
 </dl>
