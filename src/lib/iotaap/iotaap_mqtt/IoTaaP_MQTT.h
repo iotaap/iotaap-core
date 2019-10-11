@@ -21,7 +21,7 @@ public:
     void subscribe(const char *topic);
     void enableApi(unsigned long serialBaud = 115200);
     void apiLoop(int interval = 10);
-    void callbackInnerFunction(String deviceID, char *topic, byte *message, unsigned int length);
+    void callbackInnerFunction(String controlTopic, char *topic, byte *message, unsigned int length);
 
 private:
     PubSubClient _mqttPubSub;
