@@ -174,7 +174,7 @@ void IoTaaP_MQTT::apiLoop(int interval)
 }
 
 /**
- * @brief Inner function to be used in MQTT callback as direct API listener on topic 'api/listen/<device-id>'.
+ * @brief Inner function to be used in MQTT callback as direct API listener on topic 'api/listen/<control_topic>'.
  * 
  * @param controlTopic Topic where control JSON is published
  * @param topic Callback topic parameter
