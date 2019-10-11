@@ -68,4 +68,4 @@ Be clear and informative
 Format your code before pushing any changes
 
 ## License
-By contributing, you agree that your contributions will be licensed under MIT License.
+By contributing, you agree that your contributions will be licensed under CC BY-SA 4.0 License.
