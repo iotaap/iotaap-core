@@ -1,5 +1,21 @@
 # Change Log
-All notable changes to this project will be documented in this file.
+
+## [0.1.0] - 2019-10-11
+   
+### Added
+
+- QC Hardware test
+- MQTT API
+- disablePWM function
+- IoTaaP-API example
+ 
+### Changed
+
+- License
+- Documentation
+- Travis configuration
+   
+### Fixed
 
 ## [0.0.4] - 2019-10-02
   

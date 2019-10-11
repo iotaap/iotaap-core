@@ -22,7 +22,7 @@ All code changes happen through pull requests.
 3. Make your changes and test your code
 4. Generate new documentation using [Doxygen](http://www.doxygen.nl/download.html) and put it in "docs" directory
     * This is not mandatory, but it's helpful
-    * Doxyfile, footer and style are located under "docs" directory
+    * Doxyfile and footer are located under "docs" directory
 5. Update CHANGELOG
 6. Commit your changes (`git commit -am 'Add spaceship feature'`)
 7. Push to the branch (`git push origin feature/spaceship`)
@@ -68,4 +68,4 @@ Be clear and informative
 Format your code before pushing any changes
 
 ## License
-By contributing, you agree that your contributions will be licensed under MIT License.
+By contributing, you agree that your contributions will be licensed under GNU General Public License.
