@@ -6,6 +6,7 @@
  */
 IoTaaP_MQTT::IoTaaP_MQTT()
 {
+    this->_intervalCounter = 0;
 }
 
 /**
@@ -111,59 +112,76 @@ uint16_t IoTaaP_MQTT::keepAlive()
 }
 
 /**
- * @brief API function that will publish IoTaaP states to the topic 'api/transfer'
+ * @brief Subscribes to IoTaaP API topics and enables Serial function
  * 
+ * @param serialBaud Optional baud rate if Serial is used. Default 115200.
  */
-void IoTaaP_MQTT::apiLoop()
+void IoTaaP_MQTT::enableApi(unsigned long serialBaud)
+{
+    this->subscribe("api/#");
+    this->_iotaapSerial.init(serialBaud);
+}
+
+/**
+ * @brief API function that will publish IoTaaP input states to the topic 'api/transfer'. Almost non-blocking.
+ * 
+ * @param interval Time in ms between two state readings. Default 10ms.
+ */
+void IoTaaP_MQTT::apiLoop(int interval)
 {
     DynamicJsonDocument _doc(1024);
     this->keepAlive();
 
-    _doc["device"] = this->_mqttclientID;
+    delay(1);
+    this->_intervalCounter++;
+    if (_intervalCounter >= interval)
+    {
+        _intervalCounter = 0;
 
-    _doc["data"]["onbloard"]["but1"] = this->_iotaapMisc.getBUT1();
-    _doc["data"]["onbloard"]["but2"] = this->_iotaapMisc.getBUT2();
+        _doc["device"] = this->_mqttclientID;
 
-    _doc["data"]["digital"]["2"] = this->_iotaapMisc.getPin(2);
-    _doc["data"]["digital"]["4"] = this->_iotaapMisc.getPin(4);
-    _doc["data"]["digital"]["12"] = this->_iotaapMisc.getPin(12);
-    _doc["data"]["digital"]["13"] = this->_iotaapMisc.getPin(13);
-    _doc["data"]["digital"]["14"] = this->_iotaapMisc.getPin(14);
-    _doc["data"]["digital"]["15"] = this->_iotaapMisc.getPin(15);
-    _doc["data"]["digital"]["16"] = this->_iotaapMisc.getPin(16);
-    _doc["data"]["digital"]["17"] = this->_iotaapMisc.getPin(17);
-    _doc["data"]["digital"]["26"] = this->_iotaapMisc.getPin(26);
-    _doc["data"]["digital"]["27"] = this->_iotaapMisc.getPin(27);
-    _doc["data"]["digital"]["32"] = this->_iotaapMisc.getPin(32);
-    _doc["data"]["digital"]["33"] = this->_iotaapMisc.getPin(33);
-    _doc["data"]["digital"]["34"] = this->_iotaapMisc.getPin(34);
-    _doc["data"]["digital"]["35"] = this->_iotaapMisc.getPin(35);
+        _doc["data"]["onboard"]["but1"] = this->_iotaapMisc.getBUT1();
+        _doc["data"]["onboard"]["but2"] = this->_iotaapMisc.getBUT2();
 
-    _doc["data"]["analog"]["16"] = this->_iotaapMisc.adc.getValue(16);
-    _doc["data"]["analog"]["17"] = this->_iotaapMisc.adc.getValue(17);
-    _doc["data"]["analog"]["32"] = this->_iotaapMisc.adc.getValue(32);
-    _doc["data"]["analog"]["33"] = this->_iotaapMisc.adc.getValue(33);
-    _doc["data"]["analog"]["34"] = this->_iotaapMisc.adc.getValue(34);
-    _doc["data"]["analog"]["35"] = this->_iotaapMisc.adc.getValue(35);
+        _doc["data"]["digital"]["2"] = this->_iotaapMisc.getPin(2);
+        _doc["data"]["digital"]["4"] = this->_iotaapMisc.getPin(4);
+        _doc["data"]["digital"]["12"] = this->_iotaapMisc.getPin(12);
+        _doc["data"]["digital"]["13"] = this->_iotaapMisc.getPin(13);
+        _doc["data"]["digital"]["14"] = this->_iotaapMisc.getPin(14);
+        _doc["data"]["digital"]["15"] = this->_iotaapMisc.getPin(15);
+        _doc["data"]["digital"]["16"] = this->_iotaapMisc.getPin(16);
+        _doc["data"]["digital"]["17"] = this->_iotaapMisc.getPin(17);
+        _doc["data"]["digital"]["26"] = this->_iotaapMisc.getPin(26);
+        _doc["data"]["digital"]["27"] = this->_iotaapMisc.getPin(27);
+        _doc["data"]["digital"]["32"] = this->_iotaapMisc.getPin(32);
+        _doc["data"]["digital"]["33"] = this->_iotaapMisc.getPin(33);
+        _doc["data"]["digital"]["34"] = this->_iotaapMisc.getPin(34);
+        _doc["data"]["digital"]["35"] = this->_iotaapMisc.getPin(35);
 
-    char accJson[1024];
+        _doc["data"]["analog"]["16"] = this->_iotaapMisc.adc.getValue(16);
+        _doc["data"]["analog"]["17"] = this->_iotaapMisc.adc.getValue(17);
+        _doc["data"]["analog"]["32"] = this->_iotaapMisc.adc.getValue(32);
+        _doc["data"]["analog"]["33"] = this->_iotaapMisc.adc.getValue(33);
+        _doc["data"]["analog"]["34"] = this->_iotaapMisc.adc.getValue(34);
+        _doc["data"]["analog"]["35"] = this->_iotaapMisc.adc.getValue(35);
 
-    serializeJson(_doc, accJson);
+        char accJson[1024];
 
-    this->_mqttPubSub.publish("api/transfer", accJson);
+        serializeJson(_doc, accJson);
 
-    delay(10);
+        this->_mqttPubSub.publish("api/transfer", accJson);
+    }
 }
 
 /**
  * @brief Inner function to be used in MQTT callback as direct API listener on topic 'api/listen/<device-id>'.
  * 
- * @param deviceID Device unque ID - topic where JSON is published
+ * @param controlTopic Topic where control JSON is published
  * @param topic Callback topic parameter
  * @param message Callback message parameter
  * @param length Callback length parameter
  */
-void IoTaaP_MQTT::callbackInnerFunction(String deviceID, char *topic, byte *message, unsigned int length)
+void IoTaaP_MQTT::callbackInnerFunction(String controlTopic, char *topic, byte *message, unsigned int length)
 {
     String messageTemp;
     DynamicJsonDocument inputBuffer(1024);
@@ -174,7 +192,7 @@ void IoTaaP_MQTT::callbackInnerFunction(String deviceID, char *topic, byte *mess
     }
 
     // Check if data is received on state layer
-    if (String(topic) == "api/listen/" + deviceID)
+    if (String(topic) == "api/listen/" + controlTopic)
     {
         deserializeJson(inputBuffer, messageTemp);
 
@@ -188,6 +206,7 @@ void IoTaaP_MQTT::callbackInnerFunction(String deviceID, char *topic, byte *mess
         if (inputBuffer.containsKey("output"))
         {
             // Make pin as output
+            this->_iotaapPWM.disablePWM((int)inputBuffer["output"]["pin"]);
             this->_iotaapMisc.makePinOutput((int)inputBuffer["output"]["pin"]);
             // Check if pin is digital
             if (inputBuffer["output"]["type"] == "digital")

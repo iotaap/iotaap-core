@@ -19,12 +19,14 @@ public:
     uint16_t keepAlive();
     bool publish(const char *topic, const char *payload);
     void subscribe(const char *topic);
-    void apiLoop();
-    void callbackInnerFunction(String deviceID,char *topic, byte *message, unsigned int length);
+    void enableApi(unsigned long serialBaud = 115200);
+    void apiLoop(int interval = 10);
+    void callbackInnerFunction(String deviceID, char *topic, byte *message, unsigned int length);
 
 private:
     PubSubClient _mqttPubSub;
     bool _reconnectMQTT();
+    int _intervalCounter;
     const char *_mqttclientID;
     const char *_mqttuser;
     const char *_mqttpassword;

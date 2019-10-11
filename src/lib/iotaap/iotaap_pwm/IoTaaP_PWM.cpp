@@ -32,3 +32,12 @@ void IoTaaP_PWM::set(uint8_t channel, uint32_t duty)
 {
     ledcWrite(channel, duty);
 }
+
+/**
+ * @brief Detaches PWM from the pin
+ * 
+ * @param pin Pin to detach PWM from
+ */
+void IoTaaP_PWM::disablePWM(uint8_t pin){
+    ledcDetachPin(pin);
+}

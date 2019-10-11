@@ -10,6 +10,7 @@ public:
 
     void setup(uint8_t channel, double freq, uint8_t resolution, uint8_t pin);
     void set(uint8_t channel, uint32_t duty);
+    void disablePWM(uint8_t pin);
 
 private:
 };
