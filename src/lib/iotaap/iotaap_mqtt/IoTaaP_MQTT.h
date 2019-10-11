@@ -5,6 +5,10 @@
 #include "WiFi.h"
 #include "lib/3rd_party/PubSubClient/PubSubClient.h"
 #include <WiFiClientSecure.h>
+#include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
+#include "lib/3rd_party/ArduinoJson/ArduinoJson-v6.12.0.h"
+#include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
+#include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
 
 class IoTaaP_MQTT
 {
@@ -15,6 +19,8 @@ public:
     uint16_t keepAlive();
     bool publish(const char *topic, const char *payload);
     void subscribe(const char *topic);
+    void apiLoop();
+    void callbackInnerFunction(String deviceID,char *topic, byte *message, unsigned int length);
 
 private:
     PubSubClient _mqttPubSub;
@@ -24,6 +30,9 @@ private:
     const char *_mqttpassword;
     WiFiClientSecure _wifiClientSecure;
     WiFiClient _wifiClient;
+    IoTaaP_Misc _iotaapMisc;
+    IoTaaP_Serial _iotaapSerial;
+    IoTaaP_PWM _iotaapPWM;
 };
 
 #endif

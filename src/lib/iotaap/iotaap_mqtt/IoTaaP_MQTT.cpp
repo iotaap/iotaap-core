@@ -111,6 +111,103 @@ uint16_t IoTaaP_MQTT::keepAlive()
 }
 
 /**
+ * @brief API function that will publish IoTaaP states to the topic 'api/transfer'
+ * 
+ */
+void IoTaaP_MQTT::apiLoop()
+{
+    DynamicJsonDocument _doc(1024);
+    this->keepAlive();
+
+    _doc["device"] = this->_mqttclientID;
+
+    _doc["data"]["onbloard"]["but1"] = this->_iotaapMisc.getBUT1();
+    _doc["data"]["onbloard"]["but2"] = this->_iotaapMisc.getBUT2();
+
+    _doc["data"]["digital"]["2"] = this->_iotaapMisc.getPin(2);
+    _doc["data"]["digital"]["4"] = this->_iotaapMisc.getPin(4);
+    _doc["data"]["digital"]["12"] = this->_iotaapMisc.getPin(12);
+    _doc["data"]["digital"]["13"] = this->_iotaapMisc.getPin(13);
+    _doc["data"]["digital"]["14"] = this->_iotaapMisc.getPin(14);
+    _doc["data"]["digital"]["15"] = this->_iotaapMisc.getPin(15);
+    _doc["data"]["digital"]["16"] = this->_iotaapMisc.getPin(16);
+    _doc["data"]["digital"]["17"] = this->_iotaapMisc.getPin(17);
+    _doc["data"]["digital"]["26"] = this->_iotaapMisc.getPin(26);
+    _doc["data"]["digital"]["27"] = this->_iotaapMisc.getPin(27);
+    _doc["data"]["digital"]["32"] = this->_iotaapMisc.getPin(32);
+    _doc["data"]["digital"]["33"] = this->_iotaapMisc.getPin(33);
+    _doc["data"]["digital"]["34"] = this->_iotaapMisc.getPin(34);
+    _doc["data"]["digital"]["35"] = this->_iotaapMisc.getPin(35);
+
+    _doc["data"]["analog"]["16"] = this->_iotaapMisc.adc.getValue(16);
+    _doc["data"]["analog"]["17"] = this->_iotaapMisc.adc.getValue(17);
+    _doc["data"]["analog"]["32"] = this->_iotaapMisc.adc.getValue(32);
+    _doc["data"]["analog"]["33"] = this->_iotaapMisc.adc.getValue(33);
+    _doc["data"]["analog"]["34"] = this->_iotaapMisc.adc.getValue(34);
+    _doc["data"]["analog"]["35"] = this->_iotaapMisc.adc.getValue(35);
+
+    char accJson[1024];
+
+    serializeJson(_doc, accJson);
+
+    this->_mqttPubSub.publish("api/transfer", accJson);
+
+    delay(10);
+}
+
+/**
+ * @brief Inner function to be used in MQTT callback as direct API listener on topic 'api/listen/<device-id>'.
+ * 
+ * @param deviceID Device unque ID - topic where JSON is published
+ * @param topic Callback topic parameter
+ * @param message Callback message parameter
+ * @param length Callback length parameter
+ */
+void IoTaaP_MQTT::callbackInnerFunction(String deviceID, char *topic, byte *message, unsigned int length)
+{
+    String messageTemp;
+    DynamicJsonDocument inputBuffer(1024);
+
+    for (int i = 0; i < length; i++)
+    {
+        messageTemp += (char)message[i];
+    }
+
+    // Check if data is received on state layer
+    if (String(topic) == "api/listen/" + deviceID)
+    {
+        deserializeJson(inputBuffer, messageTemp);
+
+        // Check if data type is serial
+        if (inputBuffer.containsKey("serial"))
+        {
+            // Transfer data to serial
+            this->_iotaapSerial.printLn(inputBuffer["serial"]["data"]);
+        }
+        // Check if data type is output
+        if (inputBuffer.containsKey("output"))
+        {
+            // Make pin as output
+            this->_iotaapMisc.makePinOutput((int)inputBuffer["output"]["pin"]);
+            // Check if pin is digital
+            if (inputBuffer["output"]["type"] == "digital")
+            {
+                // Set or Clear the pin
+                (int)inputBuffer["output"]["value"] ? this->_iotaapMisc.setPin((int)inputBuffer["output"]["pin"]) : this->_iotaapMisc.clearPin((int)inputBuffer["output"]["pin"]);
+            }
+
+            // Check if pin is analog
+            if (inputBuffer["output"]["type"] == "analog")
+            {
+                // Set Analog value
+                this->_iotaapPWM.setup(1, 5000, 16, (int)inputBuffer["output"]["pin"]);
+                this->_iotaapPWM.set(1, (int)inputBuffer["output"]["value"]);
+            }
+        }
+    }
+}
+
+/**
  * @brief Publish payload to the specified topic
  * 
  * @param topic MQTT topic
