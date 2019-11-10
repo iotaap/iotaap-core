@@ -2,22 +2,21 @@
 #define __IOTAAP_KAI_H__
 
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
-#include "lib/3rd_party/Servo/Servo.h"
+#include <Wire.h>
+#include "lib/3rd_party/AdafruitServoDriver/Adafruit_PWMServoDriver.h"
 
 class IoTaaP_Kai
 {
 public:
     IoTaaP_Kai();
 
-    void init(int servo1Pin, int servo2Pin, int servo3Pin, int servo4Pin);
+    void init();
     void home();
     void walk(unsigned long T, uint16_t loops, uint16_t dir = 0);
 
 private:
-    Servo _servo1;
-    Servo _servo2;
-    Servo _servo3;
-    Servo _servo4;
+
+    Adafruit_PWMServoDriver _pwm;
 
     int _count1;
     int _count2;

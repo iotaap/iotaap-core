@@ -1,4 +1,7 @@
 #include "IoTaaP_Kai.h"
+#define SERVOMIN  150 // This is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX  600 // This is the 'maximum' pulse length count (out of 4096)
+#define SERVO_FREQ 60 // Analog servos run at ~60 Hz updates
 
 /**
  * @brief Construct a new IoTaaP_Kai::IoTaaP_Kai object
@@ -11,22 +14,18 @@ IoTaaP_Kai::IoTaaP_Kai()
 /**
  * @brief Attaches servo motors
  * 
- * @param servo1Pin Top left servo
- * @param servo2Pin Top right servo
- * @param servo3Pin Bottom left servo
- * @param servo4Pin Bottom right servo
  */
-void IoTaaP_Kai::init(int servo1Pin, int servo2Pin, int servo3Pin, int servo4Pin)
+void IoTaaP_Kai::init()
 {
-    this->_servo1.attach(servo1Pin);
-    this->_servo2.attach(servo2Pin);
-    this->_servo3.attach(servo3Pin);
-    this->_servo4.attach(servo4Pin);
+    this->_pwm = Adafruit_PWMServoDriver();
+    this->_pwm.begin();
+    this->_pwm.setOscillatorFrequency(27000000);  // The int.osc. is closer to 27MHz  
+    this->_pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~60 Hz updates
+
 }
 
 /**
  * @brief Initial position
- * 
  */
 void IoTaaP_Kai::home()
 {
@@ -40,10 +39,10 @@ void IoTaaP_Kai::home()
     this->_pos3 = _count3;
     this->_pos4 = _count4;
 
-    this->_servo1.write(this->_pos1);
-    this->_servo2.write(this->_pos2);
-    this->_servo3.write(this->_pos3);
-    this->_servo4.write(this->_pos4);
+    this->_pwm.setPWM(0, 0, map(this->_pos1, 0, 180, SERVOMIN, SERVOMAX));
+    this->_pwm.setPWM(1, 0, map(this->_pos2, 0, 180, SERVOMIN, SERVOMAX));
+    this->_pwm.setPWM(2, 0, map(this->_pos3, 0, 180, SERVOMIN, SERVOMAX));
+    this->_pwm.setPWM(3, 0, map(this->_pos4, 0, 180, SERVOMIN, SERVOMAX));
 }
 
 /**
@@ -117,8 +116,7 @@ void IoTaaP_Kai::walk(unsigned long T, uint16_t loops, uint16_t dir)
                 {
                     this->_count1++;
                 }
-
-                this->_servo1.write(this->_count1);
+                this->_pwm.setPWM(0, 0, map(this->_count1, 0, 180, SERVOMIN, SERVOMAX));
             }
 
             if (this->_count2 != this->_pos2)
@@ -131,7 +129,7 @@ void IoTaaP_Kai::walk(unsigned long T, uint16_t loops, uint16_t dir)
                 {
                     this->_count2++;
                 }
-                this->_servo2.write(this->_count2);
+                this->_pwm.setPWM(1, 0, map(this->_count2, 0, 180, SERVOMIN, SERVOMAX));
             }
 
             if (this->_count3 != this->_pos3)
@@ -144,7 +142,7 @@ void IoTaaP_Kai::walk(unsigned long T, uint16_t loops, uint16_t dir)
                 {
                     this->_count3++;
                 }
-                this->_servo3.write(this->_count3);
+                this->_pwm.setPWM(2, 0, map(this->_count3, 0, 180, SERVOMIN, SERVOMAX));
             }
 
             if (this->_count4 != this->_pos4)
@@ -157,7 +155,7 @@ void IoTaaP_Kai::walk(unsigned long T, uint16_t loops, uint16_t dir)
                 {
                     this->_count4++;
                 }
-                this->_servo4.write(this->_count4);
+                this->_pwm.setPWM(3, 0, map(this->_count4, 0, 180, SERVOMIN, SERVOMAX));
             }
         }
     }

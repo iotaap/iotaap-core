@@ -25,6 +25,7 @@
 #include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
 #include "lib/3rd_party/Servo/Servo.h"
+#include "lib/3rd_party/AdafruitServoDriver/Adafruit_PWMServoDriver.h"
 
 #ifdef ENABLE_KAI
 #include "lib/iotaap/iotaap_kai/IoTaaP_Kai.h"

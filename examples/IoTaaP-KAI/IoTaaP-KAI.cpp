@@ -2,13 +2,12 @@
 #define ENABLE_BTSERIAL
 
 #include "IoTaaP.h"
-#include "lib/3rd_party/Servo/Servo.h"
 
 IoTaaP iotaap; // IoTaaP library
 
 void setup()
 {
-  iotaap.kai.init(16, 17, 4, 13); // Setup KAI robot servo pins
+  iotaap.kai.init(); // Setup KAI robot servo pins
   iotaap.kai.home(); // Move servo motors to initial position
   iotaap.btSerial.begin("KAI"); // Open Bluetooth connection 
 }
