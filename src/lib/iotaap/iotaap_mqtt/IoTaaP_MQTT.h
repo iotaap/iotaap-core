@@ -17,7 +17,7 @@ public:
 
     bool connect(const char *clientID, const char *server, uint16_t port, MQTT_CALLBACK_SIGNATURE, bool secure = false, const char *user = '\0', const char *password = '\0', const char *ca_cert = "");
     uint16_t keepAlive();
-    bool publish(const char *topic, const char *payload);
+    bool publish(const char *topic, const char *payload, boolean retain);
     void subscribe(const char *topic);
     void enableApi(unsigned long serialBaud = 115200);
     void apiLoop(int interval = 10);
