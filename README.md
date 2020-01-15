@@ -10,10 +10,9 @@ Define used special features before IoTaaP.h and include it in your project. All
 ## Usage example
 
 ```
-//#define ENABLE_KAI
+//#define ENABLE_JSON
 #define ENABLE_DEBOUNCE
 //#define ENABLE_BTSERIAL
-#define ENABLE_JSON
 
 #include "IoTaaP.h"
 

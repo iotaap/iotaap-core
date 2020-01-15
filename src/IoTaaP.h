@@ -27,10 +27,6 @@
 #include "lib/3rd_party/Servo/Servo.h"
 #include "lib/3rd_party/AdafruitServoDriver/Adafruit_PWMServoDriver.h"
 
-#ifdef ENABLE_KAI
-#include "lib/iotaap/iotaap_kai/IoTaaP_Kai.h"
-#endif
-
 // 3rd party libs includes
 #ifdef ENABLE_DEBOUNCE
 #include "lib/3rd_party/Debounce/Debounce.h"
@@ -62,10 +58,6 @@ public:
     IoTaaP_Serial serial;
     IoTaaP_DAC dac;
     IoTaaP_PWM pwm;
-
-    #ifdef ENABLE_KAI
-    IoTaaP_Kai kai;
-    #endif
 
     // 3rd party libs
     #ifdef ENABLE_BTSERIAL
