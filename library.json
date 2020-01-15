@@ -2,6 +2,7 @@
   "name": "IoTaaP",
   "keywords": "iotaap, connectivity, wifi, bluetooth, communication",
   "description": "Library for IoTaaP connectivity platform",
+  "homepage": "https://www.iotaap.io",
   "repository":
   {
     "type": "git",
@@ -16,6 +17,6 @@
       "maintainer": true
     }
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "frameworks": "arduino"
 }

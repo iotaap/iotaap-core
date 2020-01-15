@@ -22,21 +22,21 @@ IoTaaP iotaap;
 
 ## Hardware
 
-Use official [IoTaaP Hardware modules](https://iotaap.mvt-solutions.com/)
+Use official [IoTaaP Hardware modules](https://www.iotaap.io/)
 
-* [IoTaaP Magnolia](https://iotaap.mvt-solutions.com/platform/)
+* [IoTaaP Magnolia](https://www.iotaap.io/platform/)
 
 ## Instructions
 
-Follow [official instructions](https://iotaap.mvt-solutions.com/build/) for even faster IoT development process!
+Follow [official instructions](https://www.iotaap.io/build/) for even faster IoT development process!
 
 ## Documentation
 
-Official [documentation](https://iotaap.mvt-solutions.com/official-docs)
+Official [documentation](https://www.iotaap.io/official-docs)
 
 ## Community
 
-Join [IoTaaP community](https://iotaap.com/) today!
+Join [IoTaaP community](https://community.iotaap.io) today!
 
 ## Authors
 
