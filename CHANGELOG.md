@@ -1,5 +1,18 @@
 # Change Log
 
+## [0.1.1] - 2020-01-15
+   
+### Added
+ 
+### Changed
+
+- Documentation
+- Removed support for KAI
+   
+### Fixed
+
+- Fixed MQTT examples
+
 ## [0.1.0] - 2019-10-11
    
 ### Added

@@ -50,7 +50,7 @@ void loop()
 
   serializeJson(doc, accJson);
 
-  iotaap.mqtt.publish("iotaap/accelerometer", accJson);
+  iotaap.mqtt.publish("iotaap/accelerometer", accJson, false);
 
   delay(200);
 }

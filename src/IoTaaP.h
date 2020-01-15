@@ -4,7 +4,7 @@
  * 
  * MVT Solutions <iotaap@mvt-solutions.com>
  * https://www.mvt-solutions.com
- * https://iotaap.mvt-solutions.com
+ * https://www.iotaap.io
  * 
  */
 
@@ -25,10 +25,7 @@
 #include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
 #include "lib/3rd_party/Servo/Servo.h"
-
-#ifdef ENABLE_KAI
-#include "lib/iotaap/iotaap_kai/IoTaaP_Kai.h"
-#endif
+#include "lib/3rd_party/AdafruitServoDriver/Adafruit_PWMServoDriver.h"
 
 // 3rd party libs includes
 #ifdef ENABLE_DEBOUNCE
@@ -61,10 +58,6 @@ public:
     IoTaaP_Serial serial;
     IoTaaP_DAC dac;
     IoTaaP_PWM pwm;
-
-    #ifdef ENABLE_KAI
-    IoTaaP_Kai kai;
-    #endif
 
     // 3rd party libs
     #ifdef ENABLE_BTSERIAL

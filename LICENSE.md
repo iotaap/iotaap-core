@@ -1,7 +1,7 @@
 IoTaaP - Internet of Things as a Platform
 
 Copyright (c) MVT Solutions (www.mvt-solutions.com)  
-Copyright (c) IoTaaP (iotaap.mvt-solutions.com)  
+Copyright (c) IoTaaP (www.iotaap.io)  
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

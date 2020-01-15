@@ -231,12 +231,13 @@ void IoTaaP_MQTT::callbackInnerFunction(String controlTopic, char *topic, byte *
  * 
  * @param topic MQTT topic
  * @param payload MQTT topic payload
+ * @param retain Retain last message
  * @return true if successfully connected
  * @return false if there was a problem
  */
-bool IoTaaP_MQTT::publish(const char *topic, const char *payload)
+bool IoTaaP_MQTT::publish(const char *topic, const char *payload, boolean retain)
 {
-    return this->_mqttPubSub.publish(topic, payload);
+    return this->_mqttPubSub.publish(topic, payload, retain);
 }
 
 /**
