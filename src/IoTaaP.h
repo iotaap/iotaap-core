@@ -2,8 +2,7 @@
  * IoTaaP - Internet of Things as a Platform
  * Connectivity platform for rapid development
  * 
- * MVT Solutions <iotaap@mvt-solutions.com>
- * https://www.mvt-solutions.com
+ * IoTaaP Team <contact@iotaap.io>
  * https://www.iotaap.io
  * 
  */

@@ -1,7 +1,7 @@
 {
-  "name": "IoTaaP",
-  "keywords": "iotaap, connectivity, wifi, bluetooth, communication",
-  "description": "Library for IoTaaP connectivity platform",
+  "name": "IoTaaP Core",
+  "keywords": "iotaap, connectivity, wifi, core, communication, iot",
+  "description": "Core library for IoTaaP development board",
   "homepage": "https://www.iotaap.io",
   "repository":
   {
@@ -11,12 +11,13 @@
   "authors":
   [
     {
-      "name": "MVT Solutions",
-      "email": "solutions@mvt-solutions.com",
-      "url": "https://www.mvt-solutions.com",
+      "name": "IoTaaP Team",
+      "email": "contact@iotaap.io",
+      "url": "https://www.iotaap.io",
       "maintainer": true
     }
   ],
-  "version": "0.1.1",
-  "frameworks": "arduino"
+  "version": "0.1.2",
+  "frameworks": "arduino",
+  "platforms": "espressif32"
 }

@@ -6,6 +6,17 @@
  
 ### Changed
 
+- Library name
+- Author
+   
+### Fixed
+
+## [0.1.1] - 2020-01-15
+   
+### Added
+ 
+### Changed
+
 - Documentation
 - Removed support for KAI
    

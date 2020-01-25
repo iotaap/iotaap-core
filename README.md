@@ -1,4 +1,4 @@
-# IoTaaP - Internet of Things as a Platform
+# IoTaaP Core - Internet of Things as a Platform core library
 > Connectivity platform for rapid development
 
 [![Build Status](https://travis-ci.org/mvtsolutions/iotaap.svg?branch=master)](https://travis-ci.org/mvtsolutions/iotaap)
@@ -39,8 +39,8 @@ Join [IoTaaP community](https://community.iotaap.io) today!
 
 ## Authors
 
-* [MVT Solutions](https://www.mvt-solutions.com) – iotaap@mvt-solutions.com
-* IoTaaP community
+* [IoTaaP Team](https://www.iotaap.io) – contact@iotaap.io
+* IoTaaP Community
 
 ## License
 
