@@ -1,7 +1,7 @@
 # IoTaaP Core - Internet of Things as a Platform core library
 > Connectivity platform for rapid development
 
-[![Build Status](https://travis-ci.org/mvtsolutions/iotaap.svg?branch=master)](https://travis-ci.org/mvtsolutions/iotaap)
+[![Build Status](https://travis-ci.org/iotaap/iotaap-core.svg?branch=master)](https://travis-ci.org/iotaap/iotaap-core)
 
 ## Usage
 

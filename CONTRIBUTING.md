@@ -8,11 +8,6 @@ Let's create together! We want to make contributing to this project as easy and 
 - Proposing new features
 - Becoming a maintainer
 
-## Kanban
-
-Check our [Kanban](https://github.com/orgs/mvtsolutions/projects/1), all tasks in Kanban are prioritized. If you want to add a new task 
-please submit a new issue with the appropriate label to "IoTaaP Firmware" project.
-
 ## Pull Request Process
 
 All code changes happen through pull requests.
