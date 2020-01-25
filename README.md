@@ -25,13 +25,13 @@ Use official [IoTaaP Hardware modules](https://www.iotaap.io/)
 
 * [IoTaaP Magnolia](https://www.iotaap.io/platform/)
 
-## Instructions
+## Tutorials
 
-Follow [official instructions](https://www.iotaap.io/build/) for even faster IoT development process!
+Follow [official tutorials](https://docs.iotaap.io/iotaap-tutorials/) for even faster IoT development process!
 
 ## Documentation
 
-Official [documentation](https://www.iotaap.io/official-docs)
+Official [documentation](https://docs.iotaap.io)
 
 ## Community
 
