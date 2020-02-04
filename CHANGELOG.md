@@ -1,5 +1,18 @@
 # Change Log
 
+## [0.2.0] - 2020-02-04
+   
+### Added
+ 
+### Changed
+
+- Changed local 3rd party dependencies to global
+- Removed unnecessary examples and features 
+- Removed special features
+- Removed API - that will be standalone library
+   
+### Fixed
+
 ## [0.1.1] - 2020-01-15
    
 ### Added
