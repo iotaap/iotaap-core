@@ -19,7 +19,7 @@ install:
     - pip install -U platformio
     - platformio update
     - platformio platform install espressif32
+    - pio lib -g install $TRAVIS_BUILD_DIR
 
 script:
     - platformio ci --lib="." $PLATFORMIO_CI_EXTRA_ARGS
-    - platformio lib --global install
