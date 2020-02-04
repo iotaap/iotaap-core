@@ -19,7 +19,7 @@ install:
     - pip install -U platformio
     - platformio update
     - platformio platform install espressif32
-    - platformio lib install
 
 script:
     - platformio ci --lib="." $PLATFORMIO_CI_EXTRA_ARGS
+    - platformio lib --global install
