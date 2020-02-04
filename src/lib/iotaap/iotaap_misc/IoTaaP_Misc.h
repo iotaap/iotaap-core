@@ -2,6 +2,7 @@
 #define __IOTAAP_MISC_H__
 
 #include <Arduino.h>
+#include <Bounce2.h>
 #include "IoTaaP_Defines.h"
 #include "IoTaaP_Types.h"
 #include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"

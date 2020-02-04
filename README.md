@@ -5,15 +5,11 @@
 
 ## Usage
 
-Define used special features before IoTaaP.h and include it in your project. All available special features are listed in SpecialFeatures.h file.
+Include IoTaaP.h to your project and define IoTaaP object
 
 ## Usage example
 
 ```
-//#define ENABLE_JSON
-#define ENABLE_DEBOUNCE
-//#define ENABLE_BTSERIAL
-
 #include "IoTaaP.h"
 
 IoTaaP iotaap;

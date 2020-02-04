@@ -1,6 +1,4 @@
-#define ENABLE_JSON
-
-#include "IoTaaP.h"
+#include <IoTaaP.h>
 
 IoTaaP iotaap; // IoTaaP library
 
@@ -64,11 +62,9 @@ void loop()
 {
   iotaap.mqtt.keepAlive();
 
-  accelerometer acc = iotaap.accelerometer.getRaw();
-
-  doc["x"] = acc.x;
-  doc["y"] = acc.y;
-  doc["z"] = acc.z;
+  doc["x"] = random(0,255);
+  doc["y"] = random(0,255);
+  doc["z"] = random(0,255);
 
   char accJson[255];
 

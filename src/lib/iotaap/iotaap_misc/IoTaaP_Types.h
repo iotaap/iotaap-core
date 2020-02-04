@@ -12,15 +12,4 @@ struct wifiConnectionInfo
     IPAddress ipAddress;
 };
 
-/**
- * @brief Structure that contains accelerometer values
- * 
- */
-struct accelerometer
-{
-    uint16_t x;
-    uint16_t y;
-    uint16_t z;
-};
-
 #endif
