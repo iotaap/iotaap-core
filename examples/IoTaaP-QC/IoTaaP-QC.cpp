@@ -24,7 +24,7 @@ void setup()
   delay(1000);
   iotaap.oled.showText("4. Hall\n" + String(iotaap.hall.read()));
   delay(1000);
-  iotaap.oled.showText("5. Serial\nrintln: TEST OK");
+  iotaap.oled.showText("5. Serial\nprintln: TEST OK");
   iotaap.serial.init(115200);
   iotaap.serial.printLn("TEST OK");
   delay(500);
