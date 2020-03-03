@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.2.1] - 2020-03-03
+   
+### Added
+
+Added shields examples
+ 
+### Changed
+   
+### Fixed
+
 ## [0.2.0] - 2020-02-04
    
 ### Added
