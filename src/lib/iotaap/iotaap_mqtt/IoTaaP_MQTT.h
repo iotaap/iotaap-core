@@ -10,6 +10,8 @@
 #include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
 
+#define MQTT_MAX_PACKET_SIZE 4096
+
 class IoTaaP_MQTT
 {
 public:

@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.2.2 - 2020-03-08
+   
+### Added
+ 
+### Changed
+   
+### Fixed
+
+Fixed getting battery percentage
+Updated max MQTT package size to 4096
+
 ## [0.2.1] - 2020-03-03
    
 ### Added

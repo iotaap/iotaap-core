@@ -99,7 +99,8 @@ bool IoTaaP_Misc::getBUT2()
     return !digitalRead(ONBOARD_BUT2);
 }
 
-bool IoTaaP_Misc::getPin(int pin){
+bool IoTaaP_Misc::getPin(int pin)
+{
     return digitalRead(pin);
 }
 
@@ -110,7 +111,12 @@ bool IoTaaP_Misc::getPin(int pin){
  */
 double IoTaaP_Misc::getBatteryPercentage()
 {
-    return round(((this->adc.getVoltage(this->adc.getValue(BATSENS_PIN)) * 2) / 4.2) * 100);
+    float perc = round(((this->adc.getVoltage(this->adc.getValue(BATSENS_PIN)) * 2) / 4.2) * 100);
+    if (perc > 100)
+        perc = 100;
+    if (perc < 0)
+        perc = 0;
+    return perc;
 }
 
 /**
