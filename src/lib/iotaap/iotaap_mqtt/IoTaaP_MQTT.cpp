@@ -134,3 +134,13 @@ void IoTaaP_MQTT::subscribe(const char *topic)
 {
     this->_mqttPubSub.subscribe(topic);
 }
+
+/**
+ * @brief Unubscribe from the MQTT topic
+ * 
+ * @param topic Topic name
+ */
+void IoTaaP_MQTT::unsubscribe(const char *topic)
+{
+    this->_mqttPubSub.unsubscribe(topic);
+}

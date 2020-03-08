@@ -10,8 +10,6 @@
 #include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
 
-#define MQTT_MAX_PACKET_SIZE 4096
-
 class IoTaaP_MQTT
 {
 public:
@@ -21,6 +19,7 @@ public:
     uint16_t keepAlive();
     bool publish(const char *topic, const char *payload, boolean retain);
     void subscribe(const char *topic);
+    void unsubscribe(const char *topic);
     void callbackInnerFunction(String controlTopic, char *topic, byte *message, unsigned int length);
 
 private:
