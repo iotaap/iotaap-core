@@ -1,6 +1,16 @@
 # Change Log
 
-## [0.2.2 - 2020-03-08
+## [0.2.4] - 2020-03-30
+   
+### Added
+ 
+### Changed
+Removed python 2.7 testing
+Updated WiFi connect function to implement restart on fail
+   
+### Fixed
+
+## [0.2.2] - 2020-03-08
    
 ### Added
  
