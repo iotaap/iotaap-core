@@ -13,9 +13,10 @@ IoTaaP_WiFi::IoTaaP_WiFi()
  * 
  * @param ssid AP SSID
  * @param pass AP Password
+ * @param restartOnFail System will reboot if WiFi connection fails
  * @return wifiConnectionInfo Returns structure containing status 1 and IP address if connected successfully, or status -1 and IP 0.0.0.0 if there was a problem
  */
-wifiConnectionInfo IoTaaP_WiFi::connect(const char *ssid, const char *pass)
+wifiConnectionInfo IoTaaP_WiFi::connect(const char *ssid, const char *pass, bool restartOnFail)
 {
     wifiConnectionInfo connectionInfo;
     int timeoutCounter = 0;
@@ -31,6 +32,10 @@ wifiConnectionInfo IoTaaP_WiFi::connect(const char *ssid, const char *pass)
         {
             connectionInfo.status = -1;
             connectionInfo.ipAddress = IPAddress(0, 0, 0, 0);
+            if (restartOnFail)
+            {
+                ESP.restart();
+            }
             return connectionInfo;
         }
     }
