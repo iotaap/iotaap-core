@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.2.5] - 2020-06-19
+   
+### Added
+ 
+### Changed
+Made PubSubClient version fixed to 2.7 due to bug in WiFiClientSecure.cpp: https://github.com/knolleary/pubsubclient/issues/749
+That causes problem on PubSubClient version 2.8.
+
 ## [0.2.4] - 2020-03-30
    
 ### Added
