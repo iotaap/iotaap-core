@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.2.7] - 2020-01-27
+## [0.2.7] - 2021-01-27
    
 ### Added
  
@@ -9,7 +9,7 @@ License
    
 ### Fixed
 
-## [0.2.6] - 2020-01-27
+## [0.2.6] - 2021-01-27
    
 ### Added
 Jenkinsfile (Implemented Jenkins CI)
