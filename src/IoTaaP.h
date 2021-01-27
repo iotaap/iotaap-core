@@ -22,6 +22,7 @@
 #include "lib/iotaap/iotaap_serial/IoTaaP_Serial.h"
 #include "lib/iotaap/iotaap_dac/IoTaaP_DAC.h"
 #include "lib/iotaap/iotaap_pwm/IoTaaP_PWM.h"
+#include <Adafruit_I2CDevice.h>
 
 class IoTaaP
 {
