@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.2.6] - 2020-01-27
+   
+### Added
+Jenkinsfile (Implemented Jenkins CI)
+ 
+### Changed
+Removed Travis CI
+   
+### Fixed
+Fixed (workaround): https://community.platformio.org/t/adafruit-gfx-lib-will-not-build-any-more-pio-5/15776/7
+
 ## [0.2.5] - 2020-06-19
    
 ### Added
@@ -7,6 +18,8 @@
 ### Changed
 Made PubSubClient version fixed to 2.7 due to bug in WiFiClientSecure.cpp: https://github.com/knolleary/pubsubclient/issues/749
 That causes problem on PubSubClient version 2.8.
+
+### Fixed
 
 ## [0.2.4] - 2020-03-30
    
