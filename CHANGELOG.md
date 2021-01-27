@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.2.7] - 2020-01-27
+   
+### Added
+ 
+### Changed
+License
+   
+### Fixed
+
 ## [0.2.6] - 2020-01-27
    
 ### Added

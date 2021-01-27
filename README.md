@@ -38,10 +38,10 @@ Join [IoTaaP community](https://community.iotaap.io) today!
 * [IoTaaP Team](https://www.iotaap.io) – contact@iotaap.io
 * IoTaaP Community
 
-## License
-
-Distributed under the GNU General Public License. See ``LICENSE`` for more information.
-
 ## Contributing
 
-See ``CONTRIBUTING`` for more information.
+See [CONTRIBUTING](./CONTRIBUTING.md) for more information.
+
+## License
+
+Apache License 2.0, see [LICENSE](./LICENSE.md)

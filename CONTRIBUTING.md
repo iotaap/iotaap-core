@@ -55,4 +55,4 @@ Be clear and informative
 Format your code before pushing any changes
 
 ## License
-By contributing, you agree that your contributions will be licensed under GNU General Public License.
+By contributing, you agree that your contributions will be licensed under Apache License 2.0, see [LICENSE](./LICENSE.md).
