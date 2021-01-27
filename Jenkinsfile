@@ -10,15 +10,32 @@ python3 -m platformio lib -g install ./'''
       }
     }
 
-    stage('Bulid first example') {
-      steps {
-        sh 'python3 -m platformio ci --lib="." --board="esp32dev" /home/iotaap-jenkins/pio_test/iotaap-core/examples/IoTaaP-WiFi'
+    stage('Bulid examples') {
+      parallel {
+        stage('Bulid first example') {
+          steps {
+            sh 'python3 -m platformio ci --lib="." --board="esp32dev" /home/iotaap-jenkins/pio_test/iotaap-core/examples/InitialCode'
+          }
+        }
+
+        stage('') {
+          steps {
+            sh 'python3 -m platformio ci --lib="." --board="esp32dev" /home/iotaap-jenkins/pio_test/iotaap-core/examples/IoTaaP-WiFi'
+          }
+        }
+
+        stage('Build second example') {
+          steps {
+            sh 'python3 -m platformio ci --lib="." --board="esp32dev" /home/iotaap-jenkins/pio_test/iotaap-core/examples/IoTaaP-WiFi'
+          }
+        }
+
       }
     }
 
-    stage('Build second example') {
+    stage('') {
       steps {
-        sh 'python3 -m platformio ci --lib="." --board="esp32dev" /home/iotaap-jenkins/pio_test/iotaap-core/examples/InitialCode'
+        echo 'Finished'
       }
     }
 
