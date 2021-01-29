@@ -15,10 +15,9 @@ All code changes happen through pull requests.
 1. Fork the repo
 2. Create your feature branch (`git checkout -b feature/spaceship`)
 3. Make your changes and test your code
-4. Update CHANGELOG
-5. Commit your changes (`git commit -am 'Add spaceship feature'`)
-6. Push to the branch (`git push origin feature/spaceship`)
-7. Create a new Pull Request
+4. Commit your changes (`git commit -am 'Add spaceship feature'`)
+5. Push to the branch (`git push origin feature/spaceship`)
+6. Create a new Pull Request
 
 ## Conventions
 
