@@ -14,7 +14,6 @@
 #include "lib/iotaap/iotaap_misc/IoTaaP_Misc.h"
 #include "lib/iotaap/iotaap_oled/IoTaaP_OLED.h"
 #include "lib/iotaap/iotaap_mqtt/IoTaaP_MQTT.h"
-#include "lib/iotaap/iotaap_wifi/IoTaaP_WiFi.h"
 #include "lib/iotaap/iotaap_tcp/IoTaaP_TCP.h"
 #include "lib/iotaap/iotaap_adc/IoTaaP_ADC.h"
 #include "lib/iotaap/iotaap_buzzer/IoTaaP_Buzzer.h"
@@ -33,7 +32,6 @@ public:
     IoTaaP_Misc misc;
     IoTaaP_OLED oled;
     IoTaaP_MQTT mqtt;
-    IoTaaP_WiFi wifi;
     WiFiServer wifiServer;
     WiFiClient wifiClient;
     IoTaaP_TCP tcp;
