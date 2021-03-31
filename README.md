@@ -1,7 +1,13 @@
-# IoTaaP Core - Internet of Things as a Platform core library
+# IoTaaP Core - DEPRECATED
 > Connectivity platform for rapid development
 
 [![Build Status](https://jenkins.iotaap.io/buildStatus/icon?job=iotaap-core%2Fmaster)](https://jenkins.iotaap.io/job/iotaap-core/job/master/)
+
+ ## Switching to IoTaaP OS
+
+Please be aware that this library is deprecated and we have introduced IoTaaP OS from 2021-01-29, and for any new project
+we recommend using IoTaaP OS, although IoTaaP Core will still be available.
+[**IoTaaP OS is on GitHub**](https://github.com/iotaap/iotaap-os)
 
 ## Usage
 
